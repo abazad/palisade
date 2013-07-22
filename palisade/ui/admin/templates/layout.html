@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>{% block title %}Palisade.Admin{% endblock %}</title>
+<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/bootstrap.css') }}">
+</head>
+<body>
+{% block body %}
+	<div class="container">
+		{% block container %}		
+		{% endblock %}
+	</div>
+{% endblock %}
+</body>
+</html>
