@@ -5,6 +5,8 @@ from flask import Flask, request, session, g, redirect, url_for, \
 from palisade.ui.admin import admin
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = 'jopa'
+
 app.register_blueprint(admin, url_prefix='/admin')
 
 @app.route('/')

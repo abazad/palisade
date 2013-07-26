@@ -10,18 +10,20 @@ class SQ_User(Base):
     id = Column(Integer, Sequence('sq_user_id_seq'), primary_key=True)
     first_name = Column(String(50))
     last_name = Column(String(50))
+    login = Column(String(50))
     password = Column(String(250))
     status = Column(String(3))
     traffic_limit = Column(Integer(9))
     
-    def __init__(self, first_name, last_name, password, status, traffic_limit):
+    def __init__(self, first_name, last_name, login, password, status, traffic_limit):
         self.first_name = first_name
         self.last_name = last_name
+        self.login = login
         self.password = password
         self.status = status
         self.traffic_limit = traffic_limit
     
     def __repr__(self):
-        return "<SQ_USER('%s', '%s', '%s', '%s', '%s')>" % (self.first_name, self.last_name, 'secret', self.status, self.traffic_limit)
+        return "<SQ_USER('%s', '%s', '%s', '%s', '%s', '%s')>" % (self.first_name, self.last_name, self.login, 'secret', self.status, self.traffic_limit)
 
 

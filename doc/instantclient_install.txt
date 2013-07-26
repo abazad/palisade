@@ -1,0 +1,35 @@
+Oracle Instant client and SDK
+-----------------------------
+apt-get install libaio1
+
+mkdir -p /u01/app/oracle/instantclient_11_2
+cd /u01/app/oracle/
+unzip /home/bova/inst/oracle/instantclient-basic-linux.x64-11.2.0.3.0.zip
+unzip /home/bova/inst/oracle/instantclient-sdk-linux.x64-11.2.0.3.0.zip
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME/sdk/include
+
+cd /u01/app/oracle/instantclient_11_2
+ln -s libclntsh.so.11.1 libclntsh.so
+
+cx_Oracle
+---------
+
+cd /home/bova/inst/oracle/
+tar -xvzf cx_Oracle-5.1.2.tar.gz
+cd /home/bova/inst/oracle/cx_Oracle-5.1.2/
+python setup.py build
+python setup.py install
+
+OR
+easy_install cx_Oracle
+
+Post Install
+------------
+
+cd /etc/ld.so.conf.d/
+touch oracle.conf
+echo "/u01/app/oracle/instantclient_11_2" >>/etc/ld.so.conf.d/oracle.conf
+
+vi /etc/profile.d/oracle.sh
+export ORACLE_HOME=/u01/app/oracle/instantclient_11_2
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ORACLE_HOME
