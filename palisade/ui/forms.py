@@ -4,9 +4,10 @@ Created on 24.07.2013
 @author: bova
 '''
 
-from wtforms import Form, TextField, PasswordField, IntegerField, validators
+from wtforms import Form, TextField, PasswordField, IntegerField, HiddenField, validators
 
 class UserForm(Form):
+    id = HiddenField('Id')
     first_name = TextField('First Name', [validators.Required()])
     last_name = TextField('Last Name', [validators.Required()])
     login = TextField('Login', [validators.Required()])

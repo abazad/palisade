@@ -8,12 +8,10 @@
 {% block container %}
 <p>Edit properties for user {{ form.login.data }}</p>
 
-	<form class="form-horizontal" method="post" action="{{ url_for('admin.edit_user') }}">
+	<form class="form-horizontal" method="post" action="{{ url_for('admin.edit_user', user_id=form.id.data) }}">
 		{{ render_field(form.first_name) }}
 		{{ render_field(form.last_name) }}		
-		{{ render_field(form.password) }}
-		{{ render_field(form.password_confirm) }}
 		{{ render_field(form.traffic_limit) }}
-		<input class="btn" type="submit" value="Add">
+		<input class="btn" type="submit" value="Save">
 	</form>
 {% endblock %}
