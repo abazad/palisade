@@ -1,0 +1,198 @@
+1375177049.785    869 10.50.50.20 10.50.50.20 TCP_MISS/200 8031 GET bova DIRECT/213.180.204.3 text/html http://ya.ru/
+1375177050.507    563 10.50.50.20 10.50.50.20 TCP_MISS/200 515 GET bova DIRECT/213.180.193.119 image/gif http://mc.yandex.ru/watch/723233
+1375177050.872    794 10.50.50.20 10.50.50.20 TCP_MISS/200 489 GET bova DIRECT/217.73.200.220 image/gif http://www.tns-counter.ru/V13a****yandex_ru/ru/CP1251/tmsec=yandex_ya/0
+1375177051.066    936 10.50.50.20 10.50.50.20 TCP_MISS/302 335 GET bova DIRECT/93.158.134.143 - http://kiks.yandex.ru/su/
+1375177051.093    929 10.50.50.20 10.50.50.20 TCP_MISS/200 598 GET bova DIRECT/213.180.204.3 text/javascript http://www.yandex.ru/data/mail.js?
+1375177059.694  10777 10.50.50.20 10.50.50.20 TCP_MISS/200 226 CONNECT bova DIRECT/173.194.32.147 - www.google.com:443
+1375177059.694  10475 10.50.50.20 10.50.50.20 TCP_MISS/200 226 CONNECT bova DIRECT/173.194.32.147 - www.google.com:443
+1375177235.572    351 10.50.50.20 10.50.50.20 TCP_MISS/200 590 GET bova DIRECT/217.69.133.146 image/gif http://top-fwz1.mail.ru/counter?
+1375177235.576    359 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d703055.gif
+1375177235.580    359 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d1398861.gif?
+1375177235.583    365 10.50.50.20 10.50.50.20 TCP_MISS/200 392 GET bova DIRECT/185.5.137.168 image/gif http://mail.radar.imgsmail.ru/update?
+1375177235.737    515 10.50.50.20 10.50.50.20 TCP_MISS/200 489 GET bova DIRECT/217.73.200.220 image/gif http://www.tns-counter.ru/V13a***R%3E*mail_ru/ru/UTF-8/tmsec=mail_main/558557650
+1375177235.741    493 10.50.50.20 10.50.50.20 TCP_MISS/200 375 GET bova DIRECT/88.212.196.102 image/gif http://counter.yadro.ru/hit;mail-splash/pc?
+1375177235.905    657 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d1736802.gif?
+1375177236.891    539 10.50.50.20 10.50.50.20 TCP_MISS/200 466 GET bova DIRECT/217.20.147.94 application/x-javascript http://www.odnoklassniki.ru/mapi?
+1375177236.896    554 10.50.50.20 10.50.50.20 TCP_MISS/200 931 GET bova DIRECT/217.69.139.63 application/x-javascript http://swa.mail.ru/cgi-bin/counters?
+1375177237.932   3684 10.50.50.20 10.50.50.20 TCP_MISS/200 53206 GET bova DIRECT/94.100.180.199 text/html http://mail.ru/
+1375177237.977      0 10.50.50.20 10.50.50.20 TCP_DENIED/407 3737 CONNECT - NONE/- text/html safebrowsing.google.com:443
+1375177239.193   1039 10.50.50.20 10.50.50.20 TCP_MISS/200 3383 GET bova DIRECT/94.100.180.209 text/html http://limg1.imgsmail.ru/s/images/cdn.v3.html?
+1375177239.299   1307 10.50.50.20 10.50.50.20 TCP_MISS/200 5979 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b19735774.jpg
+1375177239.415   1527 10.50.50.20 10.50.50.20 TCP_MISS/200 6996 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b20608253.jpg
+1375177239.451   1370 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d1204628.gif?
+1375177239.455   1374 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d1756452.gif?
+1375177239.458   1514 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d1730225.gif?
+1375177239.554   1667 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d822036.gif?
+1375177239.743    326 10.50.50.20 10.50.50.20 TCP_MISS/200 2678 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b18633565.jpg
+1375177239.769    314 10.50.50.20 10.50.50.20 TCP_MISS/200 2745 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b18633215.jpg
+1375177239.789    331 10.50.50.20 10.50.50.20 TCP_MISS/200 2415 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b20544771.jpg
+1375177239.818    357 10.50.50.20 10.50.50.20 TCP_MISS/200 3220 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b18627351.jpg
+1375177239.925    368 10.50.50.20 10.50.50.20 TCP_MISS/200 4779 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b20589483.jpg
+1375177240.039    739 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d635786.gif?
+1375177240.120    376 10.50.50.20 10.50.50.20 TCP_MISS/200 4703 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b18718993.jpg
+1375177240.167    342 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d1004475.gif?
+1375177240.226    300 10.50.50.20 10.50.50.20 TCP_MISS/200 7000 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b20605797.jpg
+1375177240.381    611 10.50.50.20 10.50.50.20 TCP_MISS/200 3966 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b20562698.jpg
+1375177240.428    305 10.50.50.20 10.50.50.20 TCP_MISS/200 4340 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b20598998.jpg
+1375177240.492    322 10.50.50.20 10.50.50.20 TCP_MISS/200 2904 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b20611692.jpg
+1375177240.674    290 10.50.50.20 10.50.50.20 TCP_MISS/200 5913 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b20599136.jpg
+1375177240.720    290 10.50.50.20 10.50.50.20 TCP_MISS/200 2996 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b20601439.jpg
+1375177240.818    324 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d1290319.gif?
+1375177240.900   1085 10.50.50.20 10.50.50.20 TCP_MISS/200 6035 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b20449053.jpg
+1375177240.940    546 10.50.50.20 10.50.50.20 TCP_MISS/200 392 GET bova DIRECT/185.5.137.168 image/gif http://splash.radar.imgsmail.ru/update?
+1375177240.944    263 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d523187.gif
+1375177240.952    723 10.50.50.20 10.50.50.20 TCP_MISS/200 4899 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b20594203.jpg
+1375177240.962    525 10.50.50.20 10.50.50.20 TCP_MISS/200 392 GET bova DIRECT/185.5.137.168 image/gif http://splash.radar.imgsmail.ru/update?
+1375177240.993    952 10.50.50.20 10.50.50.20 TCP_MISS/200 5522 GET bova DIRECT/128.140.169.192 image/jpeg http://rs.mail.ru/b20604530.jpg
+1375177241.013    496 10.50.50.20 10.50.50.20 TCP_MISS/200 392 GET bova DIRECT/185.5.137.168 image/gif http://mail.radar.imgsmail.ru/update?
+1375177241.118    293 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d1165028.gif?
+1375177241.230    284 10.50.50.20 10.50.50.20 TCP_MISS/200 427 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/d703057.gif
+1375177241.238    513 10.50.50.20 10.50.50.20 TCP_MISS/304 560 GET bova DIRECT/128.140.168.158 - http://r3.mail.ru/k?
+1375177241.242   4897 10.50.50.20 10.50.50.20 TCP_MISS/200 39700 GET bova DIRECT/217.69.141.64 application/x-javascript http://img.imgsmail.ru/p/h/d/0.21.1/external.min.js
+1375177241.334    426 10.50.50.20 10.50.50.20 TCP_MISS/200 553 GET bova DIRECT/128.140.169.192 image/gif http://rs.mail.ru/un?
+1375177241.619    317 10.50.50.20 10.50.50.20 TCP_MISS/200 2410 GET bova DIRECT/217.69.141.64 image/png http://img.imgsmail.ru/p/h/d/0.21.1/blocks/authForm/logo/mail.ru.png
+1375177241.646    336 10.50.50.20 10.50.50.20 TCP_MISS/200 1606 GET bova DIRECT/217.69.141.64 image/png http://img.imgsmail.ru/p/h/d/0.21.1/blocks/authForm/logo/yandex.ru.png
+1375177241.650    335 10.50.50.20 10.50.50.20 TCP_MISS/200 1515 GET bova DIRECT/217.69.141.64 image/png http://img.imgsmail.ru/p/h/d/0.21.1/blocks/authForm/logo/rambler.ru.png
+1375177241.674    353 10.50.50.20 10.50.50.20 TCP_MISS/200 1624 GET bova DIRECT/217.69.141.64 image/png http://img.imgsmail.ru/p/h/d/0.21.1/blocks/authForm/logo/gmail.com.png
+1375177241.702   1952 10.50.50.20 10.50.50.20 TCP_MISS/200 13650 GET bova DIRECT/94.100.180.209 image/png http://limg.imgsmail.ru/s/images/icon/social_ok.png?
+1375177297.016    403 10.50.50.20 10.50.50.20 TCP_MISS/200 931 GET bova DIRECT/217.69.139.63 application/x-javascript http://swa.mail.ru/cgi-bin/counters?
+1375177297.451    426 10.50.50.20 10.50.50.20 TCP_MISS/200 764 GET bova DIRECT/94.100.180.199 text/html http://mail.ru/?
+1375177309.061 241451 10.50.50.20 10.50.50.20 TCP_MISS/200 548 CONNECT bova DIRECT/173.194.32.143 - ssl.gstatic.com:443
+1375177342.141    416 10.50.50.20 10.50.50.20 TCP_MISS/200 931 GET bova DIRECT/217.69.139.63 application/x-javascript http://swa.mail.ru/cgi-bin/counters?
+1375177342.412    262 10.50.50.20 10.50.50.20 TCP_MISS/000 0 GET bova DIRECT/217.69.139.201 - http://mail.ru/?
+1375177350.476   1565 10.50.50.20 10.50.50.20 TCP_MISS/200 19733 GET bova DIRECT/212.24.43.44 text/html http://habrahabr.ru/
+1375177350.684    823 10.50.50.20 10.50.50.20 TCP_MISS/200 454 GET bova DIRECT/212.24.43.44 text/css http://habrahabr.ru/styles/1375198667/posts/index.css
+1375177350.757    897 10.50.50.20 10.50.50.20 TCP_MISS/200 4675 GET bova DIRECT/212.24.43.44 text/css http://habrahabr.ru/styles/1375198667/forms.css
+1375177350.762    901 10.50.50.20 10.50.50.20 TCP_MISS/200 1323 GET bova DIRECT/212.24.43.44 text/css http://habrahabr.ru/styles/1375198667/hubs/all.css
+1375177350.968   1107 10.50.50.20 10.50.50.20 TCP_MISS/200 5472 GET bova DIRECT/212.24.43.44 text/css http://habrahabr.ru/styles/1375198667/_parts/posts.css
+1375177350.998    312 10.50.50.20 10.50.50.20 TCP_MISS/200 3207 GET bova DIRECT/212.24.43.44 application/x-javascript http://habrahabr.ru/javascripts/1375198667/_parts/posts.js
+1375177351.110    331 10.50.50.20 10.50.50.20 TCP_MISS/200 6057 GET bova DIRECT/212.24.43.44 application/x-javascript http://habrahabr.ru/javascripts/1375198667/libs/jquery.form.js
+1375177351.315    343 10.50.50.20 10.50.50.20 TCP_MISS/200 888 GET bova DIRECT/212.24.43.44 application/x-javascript http://habrahabr.ru/javascripts/1375198667/hubs/all.js
+1375177351.346    343 10.50.50.20 10.50.50.20 TCP_MISS/200 4114 GET bova DIRECT/212.24.43.44 application/x-javascript http://habrahabr.ru/javascripts/1375198667/posts/all.js
+1375177352.019   2160 10.50.50.20 10.50.50.20 TCP_MISS/200 19065 GET bova DIRECT/212.24.43.44 text/css http://habrahabr.ru/styles/1375198667/all.css
+1375177353.340   2558 10.50.50.20 10.50.50.20 TCP_MISS/200 35536 GET bova DIRECT/212.24.43.44 application/x-javascript http://habrahabr.ru/javascripts/1375198667/libs/highlight.js
+1375177356.031   5546 10.50.50.20 10.50.50.20 TCP_MISS/200 58146 GET bova DIRECT/212.24.43.44 application/x-javascript http://habrahabr.ru/javascripts/1375198667/all.js
+1375177356.251    195 10.50.50.20 10.50.50.20 TCP_MISS/200 592 GET bova DIRECT/212.24.43.44 text/css http://habrahabr.ru/styles/1375198667/printer.css
+1375177356.773    332 10.50.50.20 10.50.50.20 TCP_MISS/200 3661 GET bova DIRECT/212.24.43.44 application/x-javascript http://habrahabr.ru/javascripts/1375198667/_parts/shortcuts.js
+1375177356.780    334 10.50.50.20 10.50.50.20 TCP_MISS/200 1008 GET bova DIRECT/212.24.43.44 text/css http://habrahabr.ru/styles/1375198667/_parts/_to_top.css
+1375177356.790    344 10.50.50.20 10.50.50.20 TCP_MISS/200 1503 GET bova DIRECT/212.24.43.44 application/x-javascript http://habrahabr.ru/javascripts/1375198667/_parts/to_top.js
+1375177356.803    357 10.50.50.20 10.50.50.20 TCP_MISS/200 1333 GET bova DIRECT/212.24.43.44 application/x-javascript http://habrahabr.ru/javascripts/1375198667/_parts/float_block.js
+1375177357.088    239 10.50.50.20 10.50.50.20 TCP_MISS/304 420 GET bova DIRECT/87.250.250.119 application/x-javascript http://mc.yandex.ru/metrika/watch.js
+1375177357.097    247 10.50.50.20 10.50.50.20 TCP_MISS/304 461 GET bova DIRECT/173.194.32.130 text/javascript http://www.google-analytics.com/ga.js
+1375177357.234    383 10.50.50.20 10.50.50.20 TCP_MISS/200 5882 GET bova DIRECT/212.24.43.44 image/png http://habrahabr.ru/images/footer.ourprojects.png?
+1375177357.305    846 10.50.50.20 10.50.50.20 TCP_MISS/200 1369 GET bova DIRECT/178.63.232.192 image/png http://habrastorage.org/storage2/2c0/8e0/200/2c08e0200e558fc05c07eacd3bda4fd8.png
+1375177357.337    828 10.50.50.20 10.50.50.20 TCP_MISS/200 1911 GET bova DIRECT/212.24.43.44 image/png http://media.habrahabr.ru/images/thumbs/companies/icons/3a/a7/70/72919/small_72919.png
+1375177357.342    883 10.50.50.20 10.50.50.20 TCP_MISS/200 1084 GET bova DIRECT/178.63.232.192 image/png http://habrastorage.org/storage2/c02/2c3/567/c022c35677f826580e87871fbeebffe9.png
+1375177357.351    907 10.50.50.20 10.50.50.20 TCP_MISS/200 1207 GET bova DIRECT/178.63.232.192 image/png http://habrastorage.org/storage2/191/52a/e22/19152ae2215b845668828b863974f81c.png
+1375177357.450    240 10.50.50.20 10.50.50.20 TCP_MISS/200 507 GET bova DIRECT/173.194.32.130 image/gif http://www.google-analytics.com/__utm.gif?
+1375177357.533    349 10.50.50.20 10.50.50.20 TCP_MISS/200 551 GET bova DIRECT/87.250.250.119 text/javascript http://mc.yandex.ru/watch/19919284?
+1375177358.374   1127 10.50.50.20 10.50.50.20 TCP_MISS/200 507 GET bova DIRECT/173.194.32.130 image/gif http://www.google-analytics.com/__utm.gif?
+1375177359.495  10788 10.50.50.20 10.50.50.20 TCP_MISS/200 226 CONNECT bova DIRECT/173.194.32.146 - www.google.com:443
+1375177359.495  10688 10.50.50.20 10.50.50.20 TCP_MISS/200 226 CONNECT bova DIRECT/173.194.32.146 - www.google.com:443
+1375177359.616   3171 10.50.50.20 10.50.50.20 TCP_MISS/200 1463 GET bova DIRECT/178.63.232.192 image/png http://habrastorage.org/storage2/f53/032/a92/f53032a9245d768b96207ac636709378.png
+1375177363.837   7331 10.50.50.20 10.50.50.20 TCP_MISS/200 51631 GET bova DIRECT/178.63.232.192 image/png http://habrastorage.org/storage2/4b8/188/5fe/4b81885fe8582d835c557af1d71884b9.png
+1375177371.053  13746 10.50.50.20 10.50.50.20 TCP_MISS/200 143545 GET bova DIRECT/178.63.232.192 image/png http://habrastorage.org/storage2/7c9/285/134/7c9285134f38cd7f1fd31fc420f81afe.png
+1375177373.069    847 10.50.50.20 10.50.50.20 TCP_MISS/200 515 GET bova DIRECT/87.250.250.119 image/gif http://mc.yandex.ru/watch/19919284?
+1375177395.366  38934 10.50.50.20 10.50.50.20 TCP_MISS/200 552580 GET bova DIRECT/178.63.232.192 image/png http://habrastorage.org/storage2/92c/2e9/9a7/92c2e99a76369018a3713aad6407e566.png
+1375177479.598    407 10.50.50.20 10.50.50.20 TCP_MISS/200 8031 GET bova DIRECT/93.158.134.3 text/html http://ya.ru/
+1375177479.856    206 10.50.50.20 10.50.50.20 TCP_MISS/200 515 GET bova DIRECT/87.250.250.119 image/gif http://mc.yandex.ru/watch/723233
+1375177479.893    215 10.50.50.20 10.50.50.20 TCP_MISS/200 489 GET bova DIRECT/217.73.200.219 image/gif http://www.tns-counter.ru/V13a****yandex_ru/ru/CP1251/tmsec=yandex_ya/0
+1375177479.899    167 10.50.50.20 10.50.50.20 TCP_MISS/302 335 GET bova DIRECT/213.180.204.143 - http://kiks.yandex.ru/su/
+1375177479.970    195 10.50.50.20 10.50.50.20 TCP_MISS/200 598 GET bova DIRECT/93.158.134.3 text/javascript http://www.yandex.ru/data/mail.js?
+1375177489.395  10165 10.50.50.20 10.50.50.20 TCP_MISS/200 226 CONNECT bova DIRECT/173.194.32.146 - www.google.com:443
+1375177504.629    211 10.50.50.20 10.50.50.20 TCP_MISS/302 593 GET bova DIRECT/77.88.21.11 text/html http://yandex.ru/favicon.ico
+1375177506.617    955 10.50.50.20 10.50.50.20 TCP_MISS/200 19737 GET bova DIRECT/212.24.43.44 text/html http://habrahabr.ru/
+1375177506.884    234 10.50.50.20 10.50.50.20 TCP_MISS/200 552 GET bova DIRECT/87.250.250.119 text/javascript http://mc.yandex.ru/watch/19919284?
+1375177506.888    198 10.50.50.20 10.50.50.20 TCP_MISS/200 507 GET bova DIRECT/173.194.32.130 image/gif http://www.google-analytics.com/__utm.gif?
+1375177506.903    224 10.50.50.20 10.50.50.20 TCP_MISS/200 507 GET bova DIRECT/173.194.32.130 image/gif http://www.google-analytics.com/__utm.gif?
+1375177521.852    199 10.50.50.20 10.50.50.20 TCP_MISS/200 515 GET bova DIRECT/87.250.250.119 image/gif http://mc.yandex.ru/watch/19919284?
+1375177559.012    260 10.50.50.20 10.50.50.20 TCP_MISS/200 8031 GET bova DIRECT/213.180.193.3 text/html http://ya.ru/
+1375177559.288    198 10.50.50.20 10.50.50.20 TCP_MISS/200 515 GET bova DIRECT/87.250.250.119 image/gif http://mc.yandex.ru/watch/723233
+1375177559.308    171 10.50.50.20 10.50.50.20 TCP_MISS/302 335 GET bova DIRECT/213.180.204.143 - http://kiks.yandex.ru/su/
+1375177559.336    258 10.50.50.20 10.50.50.20 TCP_MISS/200 489 GET bova DIRECT/217.73.200.219 image/gif http://www.tns-counter.ru/V13a****yandex_ru/ru/CP1251/tmsec=yandex_ya/0
+1375177559.381    201 10.50.50.20 10.50.50.20 TCP_MISS/200 598 GET bova DIRECT/87.250.251.3 text/javascript http://www.yandex.ru/data/mail.js?
+1375177568.958  10177 10.50.50.20 10.50.50.20 TCP_MISS/200 226 CONNECT bova DIRECT/173.194.32.146 - www.google.com:443
+1375177606.622    149 10.50.50.20 TCP_MISS/302 593 GET bova DIRECT/77.88.21.11 text/html http://yandex.ru/favicon.ico
+1375177609.190   1053 10.50.50.20 TCP_MISS/200 12023 GET bova DIRECT/87.250.250.22 text/html http://market.yandex.ru/
+1375177609.413    162 10.50.50.20 TCP_MISS/200 446 GET bova DIRECT/213.180.204.91 - http://yabs.yandex.ru/count/3f5eZUrkGbS40X00gP800OwoO8eV1Li1aRpGIMG6auKDee4EhlWQ8IuRKyZY1BlZVvM8XgoNuti5=UgpOFfK1cm5lTfAhU7dOYgigUO2beIij0QOUiG5v0m00
+1375177609.422    172 10.50.50.20 TCP_MISS/302 530 GET bova DIRECT/213.180.204.91 - http://yabs.yandex.ru/count/3f5eZIlfUbS40X02gP808OwoO8eV1Li1bG6R0MzsYBb5jV01agjuUTYc7eghAdc0gW6beIij0P6yq4ba1fE53QA13a6k-1eXBXjJoE84iG6xut-LY8Qib-Dz2G00
+1375177609.455    157 10.50.50.20 TCP_MISS/200 489 GET bova DIRECT/217.73.200.219 image/gif http://www.tns-counter.ru/V13a****yandex_ru/ru/CP1251/tmsec=yandex_market/0
+1375177609.485    195 10.50.50.20 TCP_MISS/200 4647 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177609.522    233 10.50.50.20 TCP_MISS/200 4956 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177609.562    209 10.50.50.20 TCP_MISS/200 4530 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177609.601    237 10.50.50.20 TCP_MISS/200 5828 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177609.644    188 10.50.50.20 TCP_MISS/302 335 GET bova DIRECT/213.180.204.143 - http://kiks.yandex.ru/su/
+1375177609.720    259 10.50.50.20 TCP_MISS/200 1154 GET bova DIRECT/213.180.204.201 application/javascript http://social.yandex.ru/providers2.jsonp?
+1375177609.730    194 10.50.50.20 TCP_MISS/200 4033 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177609.903    273 10.50.50.20 TCP_MISS/200 552 GET bova DIRECT/87.250.250.119 text/javascript http://mc.yandex.ru/watch/160656?
+1375177609.945    587 10.50.50.20 TCP_MISS/200 4930 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177610.010    474 10.50.50.20 TCP_MISS/200 5715 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177610.098    561 10.50.50.20 TCP_MISS/200 3652 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177610.155    428 10.50.50.20 TCP_MISS/200 3734 GET bova DIRECT/87.250.250.131 application/x-javascript http://awaps.yandex.ru/8/8967/200300.?
+1375177610.765    599 10.50.50.20 TCP_MISS/200 14451 GET bova DIRECT/87.250.250.131 image/gif http://awaps.yandex.ru/0/c1/t6-xM4J7HyJd91ltgaHrfO2NbkOj-pcygu4-wnbWlDhWCPhwzxUygpJFNExFH_tmbgtwaqfNk14O0rlGwFHC0Ej-HCAGerLbAOckPNAdD2V1fPpL3L1oyEXXq0y_t1XtNhJLtyPn1hWwPOt2DYykA9FIqKbHnXRiE+3mqDTldv+tngmELIBcRWwLf_tMXUi6y3fkVngFozP8dmL1ssFb-p4noNTObVZbB7+MybpxqxHjDXDSsH85kyg_t95eN1UBFEn1rkYZ3ooqCyo1cDpZkESiw7NyIxwt3XeN3bkDmjLdG7q0vkIxS_PWIEf35zjDTITrG2pa4kP_A_.gif?
+1375177624.748    166 10.50.50.20 TCP_MISS/200 515 GET bova DIRECT/87.250.250.119 image/gif http://mc.yandex.ru/watch/160656?
+1375177625.073  15612 10.50.50.20 TCP_MISS/200 3262 CONNECT bova DIRECT/213.180.204.215 - yandex.st:443
+1375177715.331   1626 10.50.50.20 TCP_MISS/200 12045 GET bova DIRECT/87.250.250.22 text/html http://market.yandex.ru/
+1375177716.131    673 10.50.50.20 TCP_MISS/302 530 GET bova DIRECT/213.180.204.91 - http://yabs.yandex.ru/count/NDIMk-eznCK40X02gP808OwyPeeV1Li1bG6R0MzsYBb5jV01agruUTYc7egiAdc0gW6beIij0P6yq4ba1fE53QA13a6k-auZzsXPoE84iG6xut-LY8Qib-Dz2G00
+1375177716.136    678 10.50.50.20 TCP_MISS/200 446 GET bova DIRECT/213.180.204.91 - http://yabs.yandex.ru/count/NDIMkwJj-DC40X00gP800OwyPeeV1Li1aRpGIMG6auKDee4EhlfE8_TeMSZY1BlZVvM8XgoNuti5=WAy19PK1cm5lTfAjU7dOYgmgUO2beIij0QOUiG5v0m00
+1375177716.139    357 10.50.50.20 TCP_MISS/200 552 GET bova DIRECT/87.250.250.119 text/javascript http://mc.yandex.ru/watch/160656?
+1375177716.144    592 10.50.50.20 TCP_MISS/200 495 GET bova DIRECT/217.73.200.222 image/gif http://www.tns-counter.ru/V13a****yandex_ru/ru/CP1251/tmsec=yandex_market/0
+1375177716.186    599 10.50.50.20 TCP_MISS/200 5602 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177716.230    635 10.50.50.20 TCP_MISS/200 5067 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177716.282    671 10.50.50.20 TCP_MISS/200 6404 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177716.287    667 10.50.50.20 TCP_MISS/302 335 GET bova DIRECT/213.180.204.143 - http://kiks.yandex.ru/su/
+1375177716.291    635 10.50.50.20 TCP_MISS/200 1152 GET bova DIRECT/213.180.204.201 application/javascript http://social.yandex.ru/providers2.jsonp?
+1375177716.337    739 10.50.50.20 TCP_MISS/200 5734 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177716.394    789 10.50.50.20 TCP_MISS/200 6517 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177716.576    676 10.50.50.20 TCP_MISS/200 3734 GET bova DIRECT/87.250.250.131 application/x-javascript http://awaps.yandex.ru/8/8967/200300.?
+1375177716.619    431 10.50.50.20 TCP_MISS/200 5070 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177716.888    299 10.50.50.20 TCP_MISS/200 13350 GET bova DIRECT/87.250.250.131 image/gif http://awaps.yandex.ru/0/c1/t6-xM4J7HyJd91ltgaHrfO2NbkOj-pcygrl81Wg+CNAl42ZveC-c-sEGx6Ohe_triNc6WlaD0kx5VKugac8xs9P3oEMY5igIOo39n8saV6hlEJss-zx2dqlNCRh_tMbDG2TMjwZ2kh7LkiqZDAK-osicb3hBTEIZFAR2CjXvsGHc+OXA+AMILQnfp_tN4Z3o0GCUiZctfUsW08s4iRn39Ua8gGXpVbcFBQCz+zsBZU2qbQs9xq9M+Fo_t5BtwyyTdo6huPSAkYR5MQw-Z87toZsJ049FL8KFVdHfb47ifuJPDrszWqLaI_PATKYx5yumgFV3-pLPoVO_A_.gif?
+1375177716.914   1186 10.50.50.20 TCP_MISS/200 4991 GET bova DIRECT/77.88.21.108 image/jpeg http://mdata.yandex.net/i?
+1375177730.782  17077 10.50.50.20 TCP_MISS/200 3262 CONNECT bova DIRECT/213.180.204.215 - yandex.st:443
+1375177731.020    237 10.50.50.20 TCP_MISS/200 515 GET bova DIRECT/87.250.250.119 image/gif http://mc.yandex.ru/watch/160656?
+1375177773.958  60251 10.50.50.20 TCP_MISS/200 2798 CONNECT bova DIRECT/213.180.204.215 - yandex.st:443
+1375177773.958  60253 10.50.50.20 TCP_MISS/200 2798 CONNECT bova DIRECT/213.180.204.215 - yandex.st:443
+1375177817.008   6813 10.50.50.20 TCP_MISS/200 10805 GET bova DIRECT/198.186.193.234 text/html http://www.squid-cache.org/mail-archive/squid-dev/201001/0089.html
+1375177822.088 240431 10.50.50.20 TCP_MISS/200 548 CONNECT bova DIRECT/173.194.32.143 - ssl.gstatic.com:443
+1375177916.803 242174 10.50.50.20 TCP_MISS/200 24989 CONNECT bova DIRECT/173.194.32.149 - mail.google.com:443
+1375177937.719   7126 10.50.50.20 TCP_MISS/200 2461 GET bova DIRECT/216.34.181.97 text/html http://devel.squid-cache.org/customlog/logformat.html
+1375177938.193    279 10.50.50.20 TCP_MISS/200 2097 GET bova DIRECT/216.34.181.97 image/gif http://devel.squid-cache.org/squidnow.gif
+1375177938.525    610 10.50.50.20 TCP_MISS/200 996 GET bova DIRECT/216.34.181.97 image/gif http://devel.squid-cache.org/cache_now.gif
+1375177938.545    629 10.50.50.20 TCP_MISS/200 1410 GET bova DIRECT/216.34.181.97 image/gif http://devel.squid-cache.org/w3c_vh40.gif
+1375177938.770    853 10.50.50.20 TCP_MISS/200 784 GET bova DIRECT/216.34.181.60 image/png http://sourceforge.net/sflogo.php?
+1375177939.018    237 10.50.50.20 TCP_MISS/404 1324 GET bova DIRECT/216.34.181.97 text/html http://devel.squid-cache.org/favicon.ico
+1375177948.993 292373 10.50.50.20 TCP_MISS/200 2024 CONNECT bova DIRECT/173.194.47.132 - clients6.google.com:443
+1375178170.710 612033 10.50.50.20 TCP_MISS/200 99534 CONNECT bova DIRECT/173.194.32.146 - www.google.com:443
+1375178182.011 614931 10.50.50.20 TCP_MISS/200 25670 CONNECT bova DIRECT/173.194.32.130 - clients4.google.com:443
+1375178263.911 246289 10.50.50.20 TCP_MISS/200 1499 CONNECT bova DIRECT/173.194.32.130 - clients6.google.com:443
+1375178520.445 242837 10.50.50.20 TCP_MISS/200 24943 CONNECT bova DIRECT/74.125.232.85 - mail.google.com:443
+1375178603.876 295281 10.50.50.20 TCP_MISS/200 3861 CONNECT bova DIRECT/173.194.32.129 - drive.google.com:443
+1375178673.384 294787 10.50.50.20 TCP_MISS/200 1999 CONNECT bova DIRECT/74.125.232.65 - clients6.google.com:443
+1375178688.883   5081 10.50.50.20 TCP_MISS/200 4152 CONNECT bova DIRECT/108.59.11.108 - chromeadblock.com:443
+1375179028.286 288687 10.50.50.20 TCP_MISS/200 1694 CONNECT bova DIRECT/173.194.32.129 - clients6.google.com:443
+1375179091.202   1222 10.50.50.20 TCP_MISS/200 11984 GET bova DIRECT/87.250.250.22 text/html                      http://market.yandex.ru/
+1375179091.756    390 10.50.50.20 TCP_MISS/302 530 GET bova DIRECT/93.158.134.91 - http://yabs.yandex.ru/count/Nfm4Ty7-GC040X02gP808Owyl8eV1Li1bG6R0MzsYBb5jV01agvuUTYc7egkAdc0gW6beIij0P6yq4ba1fE53QA13a6k-quOUd2hoE84iG6xut-LY8Qib-Dz2G00
+1375179091.803    433 10.50.50.20 TCP_MISS/200 446 GET bova DIRECT/93.158.134.91 - http://yabs.yandex.ru/count/Nfm4TwGowsK40X00gP800Owyl8eV1Li1aRpGIMG6auKDee4EhljE67fmgyZY1BlZVvM8XgoNuti5=h0Mk_9K1cm5lTfAkU7dOYgugUO2beIij0QOUiG5v0m00
+1375179091.806    435 10.50.50.20 TCP_MISS/200 489 GET bova DIRECT/217.73.200.219 image/gif http://www.tns-counter.ru/V13a****yandex_ru/ru/CP1251/tmsec=yandex_market/0
+1375179091.873    444 10.50.50.20 TCP_MISS/302 335 GET bova DIRECT/213.180.204.143 -                     http://kiks.yandex.ru/su/
+1375179092.005    543 10.50.50.20 TCP_MISS/200 1155 GET bova DIRECT/213.180.204.201 application/javascript     http://social.yandex.ru/providers2.jsonp?
+1375179092.262    585 10.50.50.20 TCP_MISS/200 552 GET bova DIRECT/87.250.251.119 text/javascript             http://mc.yandex.ru/watch/160656?
+1375179092.301    568 10.50.50.20 TCP_MISS/200 3730 GET bova DIRECT/213.180.204.131 application/x-javascript        http://awaps.yandex.ru/8/8967/200300.?
+1375179092.494   1110 10.50.50.20 TCP_MISS/200 4060 GET bova DIRECT/77.88.21.108 image/jpeg                    http://mdata.yandex.net/i?
+1375179092.526   1149 10.50.50.20 TCP_MISS/200 4270 GET bova DIRECT/77.88.21.108 image/jpeg                    http://mdata.yandex.net/i?
+1375179094.659   2344 10.50.50.20 TCP_MISS/200 14451 GET bova DIRECT/213.180.204.131 image/gif http://awaps.yandex.ru/0/c1/t6-xM4J7HyJd91ltgaHrfO2NbkOj-pcygu4-wnbWlDhWCPhwzxUygpBSW0isE_t04O1uiW5oh8yWv0ep1W9ivmr7aa+ErHDu0Llti9g6bIIdzCRAcbVLM+tKsAm_tpQRnyBc61yR0OnDZ6rC7szjSYj1fM4Xpk4ZSHGf1vyJUTr0VSOK6MWrjL8vn_tKW9rhw4xvU+QuHnFuoYAX8yw+rEosU2QGxGfAi5Eife2cTQmapK5sRNP-zQi_tegN452+D4amDyda1+v3O1nXXHcIPEYoAY10bLawfnjFpgGQt6DnacXk3-8ev_P4UX2nfXwgkUavU7MUrb4_A_.gif?
+1375179099.950  10649 10.50.50.20 TCP_MISS/200 226 CONNECT bova DIRECT/173.194.32.146 -                            www.google.com:443
+1375179099.950  10550 10.50.50.20 TCP_MISS/200 226 CONNECT bova DIRECT/173.194.32.146 -                            www.google.com:443
+1375179106.681  16771 10.50.50.20 TCP_MISS/200 3262 CONNECT bova DIRECT/213.180.204.215 -                                 yandex.st:443
+1375179106.987    361 10.50.50.20 TCP_MISS/200 515 GET bova DIRECT/87.250.251.119 image/gif             http://mc.yandex.ru/watch/160656?
+1375179123.704 242084 10.50.50.20 TCP_MISS/200 24932 CONNECT bova DIRECT/74.125.232.21 -                           mail.google.com:443
+1375179150.449  60539 10.50.50.20 TCP_MISS/200 2798 CONNECT bova DIRECT/213.180.204.215 -                                 yandex.st:443
+1375179150.450  60539 10.50.50.20 TCP_MISS/200 2798 CONNECT bova DIRECT/213.180.204.215 -                                 yandex.st:443
+1375179344.197 252866 10.50.50.20 TCP_MISS/200 6324 CONNECT bova DIRECT/173.194.32.135 -                       clients4.google.com:443
+1375179386.737   6596 10.50.50.20 TCP_MISS/200 2316 POST bova DIRECT/199.7.57.72 application/ocsp-response                     http://ocsp.verisign.com/
+1375179398.261 297658 10.50.50.20 TCP_MISS/200 1997 CONNECT bova DIRECT/173.194.32.135 -                       clients6.google.com:443
+1375179403.390  14968 10.50.50.20 TCP_MISS/200 5471 CONNECT bova DIRECT/63.245.217.160 -           versioncheck.addons.mozilla.org:443
+1375179404.274  15853 10.50.50.20 TCP_MISS/200 5479 CONNECT bova DIRECT/63.245.217.160 -           versioncheck.addons.mozilla.org:443
+1375179404.274  15856 10.50.50.20 TCP_MISS/200 5470 CONNECT bova DIRECT/63.245.217.160 -           versioncheck.addons.mozilla.org:443
+1375179404.275  15855 10.50.50.20 TCP_MISS/200 4988 CONNECT bova DIRECT/63.245.217.160 -           versioncheck.addons.mozilla.org:443
+1375179404.276  15855 10.50.50.20 TCP_MISS/200 4987 CONNECT bova DIRECT/63.245.217.160 -           versioncheck.addons.mozilla.org:443
