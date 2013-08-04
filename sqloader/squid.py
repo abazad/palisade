@@ -55,7 +55,38 @@ class AccessLogParser(object):
 
 
 class AccessLogRow(object):
+    '''Parse squid acces_log record to object's variables
+    Example:
+    1375177049.785    869 10.50.50.20 TCP_MISS/200 8031 GET bova DIRECT/213.180.204.3 text/html http://ya.ru/
+    
+    '''
     def __init__(self, line):
+        self.tokens = line.split()
+        self.parse()
+    
+    def parse_state(self, token):
         pass
+    
+    def parse_mime_type(self, token):
+        pass
+        
+    def parse(self):
+        self.acc_date = self.tokens[0]
+        self.response_time = self.tokens[1]
+        self.src_ip = self.tokens[2]
+        self.parse_state(self.tokens[3])
+        self.bytes = self.tokens[4]
+        self.method = self.tokens[5]
+        self.username = self.tokens[6]
+        self.acc_method = ''
+        self.parse_mime_type(self.tokens[8])
+        self.url = self.tokens[9]
+        
     def get_transformed_line(self):
         pass
+
+if __name__ == '__main__':
+    al_row = AccessLogRow("1375177049.785    869 10.50.50.20 10.50.50.20 TCP_MISS/200 8031 GET bova DIRECT/213.180.204.3 text/html http://ya.ru/")
+    print al_row.acc_date, al_row.response_time
+    
+    
