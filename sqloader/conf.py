@@ -39,7 +39,7 @@ class AppConf(object):
         
     def load_conf(self):
         if os.path.exists(self.conf_file):
-            self.load_conf()
+            self.read_conf()
         else:
             self.load_default()
         
