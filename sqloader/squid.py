@@ -54,6 +54,8 @@ class AccessLogParser(object):
 
     def save_state(self):
         bytes_to_seek=self.fh.tell()
+        self.conf.set_bytes_to_seek(bytes_to_seek)
+        print 'Bytes_to_seek: %s' % bytes_to_seek
         
     def run(self):
         self.prepare_file()

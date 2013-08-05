@@ -44,3 +44,7 @@ class AppConf(object):
             self.load_default()
         
         self.populate_variables()        
+    
+    def set_bytes_to_seek(self, bytes_to_seek):
+        self.conf.set('runtime', 'bytes_to_seek', bytes_to_seek)
+        self.save_config()
