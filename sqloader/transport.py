@@ -12,7 +12,7 @@ class FTPTransport(object):
     SERVER = '10.50.50.122'
     LOGIN = 'oracle'
     PASSWORD= 'oracle10g'
-    OUTPUT_DIR = '/tmp'
+    REMOTE_DIR = '/u02/export/palisade'
     
     def __init__(self):
         self.ftp = FTP(self.SERVER)
@@ -23,7 +23,7 @@ class FTPTransport(object):
     def copy(self, file_path):
         file_name = os.path.basename(file_path)        
         self.login()
-        self.ftp.cwd(self.OUTPUT_DIR)
+        self.ftp.cwd(self.REMOTE_DIR)
         with open(file_path, 'rb') as fh:
             self.ftp.storbinary('STOR ' + file_name, fh)        
         self.ftp.quit()

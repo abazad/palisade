@@ -1,0 +1,53 @@
+-- must be deleted
+Drop Table SQ_ACCESS_LOG_DATA_EXT;
+Create Table SQ_ACCESS_LOG_DATA_EXT (
+       access_time Date,
+       response_time Number(9),
+       client_src_ip Varchar(15),
+       sq_req_status Varchar2(64),
+       http_status_code Varchar2(4),
+       BYTES Number(9),
+       req_method Varchar2(10),
+       user_name Varchar2(32),
+       sq_hierarchy_status  Varchar2(32),
+       server_fqdn Varchar2(255),
+       mime_type Varchar2(32),
+       mime_type_desc Varchar2(32),
+       url Varchar2(2000),
+       url_hostname Varchar2(255)       
+)
+Organization External (
+       Type    oracle_loader
+       Default Directory PALISADE
+       Access Parameters (              
+              Records delimited By Newline
+              Logfile 'ora_loader.log'
+              fields terminated By '|||'
+              lrtrim
+              missing field values are Null              
+              (
+                 access_time Date 'YYYY-mm-dd HH24:MI:SS',
+                 response_time,
+                 client_src_ip,
+                 sq_req_status,
+                 http_status_code,
+                 "BYTES",
+                 req_method,                 
+                 user_name,
+                 sq_hierarchy_status,
+                 server_fqdn,
+                 mime_type,
+                 mime_type_desc,
+                 url Char(2000),
+                 url_hostname
+              ) 
+       )
+       Location ('SQ_20130808_1437.txt')
+)
+Reject Limit Unlimited;
+              
+       
+       
+       
+       
+       

@@ -1,0 +1,4 @@
+--Drop Table SQ_DIR_LIST_TEMP;
+create global temporary table SQ_DIR_LIST_TEMP
+  ( filename varchar2(255) );
+--  on commit delete rows;

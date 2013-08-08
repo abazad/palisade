@@ -1,0 +1,70 @@
+-- Create table
+create table SQ_ACCESS_LOG_DATA
+(
+  id                  NUMBER(9),
+  access_time         DATE,
+  response_time       NUMBER(9),
+  client_src_ip       VARCHAR2(15),
+  sq_req_status       VARCHAR2(64),
+  http_status_code    VARCHAR2(4),
+  bytes               NUMBER(9),
+  req_method          VARCHAR2(10),
+  user_name           VARCHAR2(32),
+  sq_hierarchy_status VARCHAR2(32),
+  server_ip           VARCHAR2(255),
+  mime_type           VARCHAR2(32),
+  mime_type_desc      VARCHAR2(32),
+  url                 VARCHAR2(4000),
+  url_hostname        VARCHAR2(255)  
+)
+partition by range (access_time)
+(
+partition data_2010_4 values less than (to_date('2011-01-01', 'YYYY-MM-DD')) tablespace SQ_DATA,
+partition data_2011_1 values less than (to_date('2011-04-01', 'YYYY-MM-DD')) tablespace SQ_DATA,
+partition data_2011_2 values less than (to_date('2011-07-01', 'YYYY-MM-DD')) tablespace SQ_DATA,
+partition data_2011_3 values less than (to_date('2011-09-01', 'YYYY-MM-DD')) tablespace SQ_DATA,
+partition data_2011_4 values less than (to_date('2012-01-01', 'YYYY-MM-DD')) tablespace SQ_DATA,
+partition data_2012_1 values less than (to_date('2012-04-01', 'YYYY-MM-DD')) tablespace SQ_DATA,
+partition data_2012_2 values less than (to_date('2012-07-01', 'YYYY-MM-DD')) tablespace SQ_DATA,
+partition data_2012_3 values less than (to_date('2012-09-01', 'YYYY-MM-DD')) tablespace SQ_DATA,
+partition data_2012_4 values less than (to_date('2013-01-01', 'YYYY-MM-DD')) tablespace SQ_DATA,
+partition data_2013_1 values less than (to_date('2013-04-01', 'YYYY-MM-DD')) tablespace SQ_DATA,
+partition data_2013_2 values less than (to_date('2013-07-01', 'YYYY-MM-DD')) tablespace SQ_DATA,
+partition data_2013_3 values less than (to_date('2013-09-01', 'YYYY-MM-DD')) tablespace SQ_DATA,
+partition data_2013_4 values less than (to_date('2014-01-01', 'YYYY-MM-DD')) tablespace SQ_DATA
+);
+/
+-- Create/Recreate indexes 
+create index SQ_ACCESS_LOG_DATA_I1 on SQ_ACCESS_LOG_DATA (ACCESS_TIME)
+  tablespace SQ_INDX
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index SQ_ACCESS_LOG_DATA_I2 on SQ_ACCESS_LOG_DATA (ID)
+  tablespace SQ_INDX
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );
+create index SQ_ACCESS_LOG_DATA_I3 on SQ_ACCESS_LOG_DATA (SQ_REQ_STATUS, ACCESS_TIME, BYTES)
+  tablespace SQ_INDX
+  pctfree 10
+  initrans 2
+  maxtrans 255
+  storage
+  (
+    initial 64K
+    minextents 1
+    maxextents unlimited
+  );

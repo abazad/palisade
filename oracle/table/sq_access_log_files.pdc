@@ -1,0 +1,6 @@
+Drop Table SQ_ACCESS_LOG_FILES;
+create table SQ_ACCESS_LOG_FILES
+  ( file_id Number(15) Not Null,
+    name varchar2(255) Not Null
+      Constraint sq_access_log_files_name_uk Unique,
+    file_status Number(1));

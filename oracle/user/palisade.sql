@@ -13,3 +13,7 @@ grant connect to palisade;
 alter user PALISADE
   quota unlimited on sq_data
   quota unlimited on sq_indx;
+
+-- for working with external files
+execute dbms_java.grant_permission('PALISADE', 'SYS:java.io.FilePermission', '/u02/export/palisade', 'read' );
+execute dbms_java.grant_permission('PALISADE', 'java.io.FilePermission', '<<ALL FILES>>', 'read ,write, execute, delete');

@@ -93,6 +93,10 @@ class AccessLogRow(object):
         self.tokens = line.split()
         self.parse()
     
+    def timestamp_to_date(self, token):
+        timestamp = time.localtime(float(token))
+        return time.strftime('%Y-%m-%d %H:%M:%S', timestamp)
+    
     def parse_request_status(self, token):
         try:
             sq_req_status, http_status_code = token.split('/')
@@ -120,7 +124,7 @@ class AccessLogRow(object):
         
     def parse(self):
         try:
-            self.acc_date = self.tokens[0]
+            self.acc_date = self.timestamp_to_date(self.tokens[0])
             self.response_time = self.tokens[1]
             self.src_ip = self.tokens[2]
             self.sq_req_status, self.http_status_code = self.parse_request_status(self.tokens[3])
