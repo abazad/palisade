@@ -11,6 +11,9 @@ import traceback
 import os.path
 import time
 
+class FieldsCountError(Exception):
+    pass
+
 class AccessLogParser(object):
     def __init__(self, conf):
         self.conf = conf
@@ -44,6 +47,8 @@ last->%s, now->%s' % (self.conf.bytes_to_seek, file_size))
         try:
             record = AccessLogRow(line)
         except IndexError:
+            pass
+        except FieldsCountError:
             pass
         else:
             self.records.append(record)
@@ -123,6 +128,11 @@ class AccessLogRow(object):
             
         
     def parse(self):
+        fields_count=11
+        if len(self.tokens) != fields_count:
+            logging.debug('Too few fields in source string: %s of %s' % 
+                          (len(self.tokens), fields_count))
+            raise FieldsCountError
         try:
             self.acc_date = self.timestamp_to_date(self.tokens[0])
             self.response_time = self.tokens[1]
