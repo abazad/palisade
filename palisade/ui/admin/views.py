@@ -15,7 +15,7 @@ def show_users():
     session = Session()
     users = session.query(SQ_User).all()
             
-    return render_template('show_users.html', users=users)
+    return render_template('admin/show_users.html', users=users)
 
 @admin.route('/user/add', methods=['GET', 'POST'])
 def add_user():
@@ -32,7 +32,7 @@ def add_user():
         session.commit()
         flash("User successfully added!")
         return redirect(url_for('.show_users'))    
-    return render_template('add_user.html', form=form)
+    return render_template('admin/add_user.html', form=form)
 
 #TODO: add feedback after form validate
 @admin.route('/user/edit/<user_id>', methods=['GET', 'POST'])
@@ -46,7 +46,7 @@ def edit_user(user_id=None):
         user.traffic_limit = form.traffic_limit.data
         session.commit()        
         return redirect(url_for('.show_users'))
-    return render_template('edit_user.html', form=form)
+    return render_template('admin/edit_user.html', form=form)
 
 @admin.route('/user/delete/<user_id>', methods=['GET'])
 def delete_user(user_id):

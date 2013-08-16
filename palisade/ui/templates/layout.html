@@ -11,8 +11,15 @@
 		<div class="navbar-inner">
 			<a class="brand" href="#">Palisade</a>
 			<ul class="nav">
-				<li class="active"><a href="{{ url_for('.show_users') }}">Users</a></li>
+				<li class="active"><a href="{{ url_for('admin.show_users') }}">Users</a></li>
 			</ul>
+			<div id="current_user" class="pull-right">
+				{% if session.logged_in %}
+					<a href="#">{{ session.current_user}}</a>
+				{% else %}
+					<a href="#">Guest</a>
+				{% endif %}
+			</div>						
 		</div>
 	</div>
 {% endblock %}

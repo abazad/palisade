@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}Palisade.User{% endblock %}
+
+{% block body %}	
+	{{ super() }}	
+{% endblock %}
+
+{% block container %}
+
+<div class="row-fluid">
+	<div class="span6">
+		<h4>Информация о пользователе</h4>
+		<ul>
+			<li>Логин: {{ user.login }}</li>
+			<li>Имя: {{ user.first_name }}</li>
+			<li>Фамилия: {{user.last_name}}</li>
+			<li>Лимит МБ: {{user.traffic_limit}}</li>
+			<li>Статус: {{user.status}}</li>
+		</ul>
+	</div>
+	<div class="span6">
+		<h4>Использованый трафик</h4>
+		<ul>
+			<li>За все время: {{ bytes_sum['all'] }}</li>
+			<li>За текущий месяц: {{ bytes_sum['month'] }}</li>
+			<li>За сегодня: {{ bytes_sum['today'] }}</li>
+		</ul>
+	</div>
+		
+</div>
+
+{% endblock %}

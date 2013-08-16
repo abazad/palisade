@@ -1,0 +1,11 @@
+{% from "_formhelpers.html" import render_field %}
+{% extends "layout.html" %}
+{% block title %}Palisade Login{% endblock %}
+{% block navbar %}{% endblock %}
+{% block container %}
+	<form class="form-horizontal" method="post" action="{{ url_for('login') }}">
+		{{ render_field(form.login) }}
+		{{ render_field(form.password) }}
+		<input class="btn" type="submit" value="Login">
+	</form>
+{% endblock %}
