@@ -21,9 +21,9 @@
 	<div class="span6">
 		<h4>Использованый трафик</h4>
 		<ul>
-			<li>За все время: {{ bytes_sum['all'] }}</li>
-			<li>За текущий месяц: {{ bytes_sum['month'] }}</li>
-			<li>За сегодня: {{ bytes_sum['today'] }}</li>
+			<li>За все время: {{ bytes_sum['all']|tomegabyte }}</li>
+			<li>За текущий месяц: {{ bytes_sum['month']|tomegabyte }}</li>
+			<li>За сегодня: {{ bytes_sum['today']|tomegabyte }}</li>
 		</ul>
 	</div>
 		

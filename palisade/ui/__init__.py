@@ -9,8 +9,13 @@ from forms import LoginForm
 from palisade.ui.admin import admin
 from palisade.ui.user import user
 
+from jinja_filters import tomegabyte
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'jopa'
+
+#Register custome Jinja filters
+app.jinja_env.filters['tomegabyte'] = tomegabyte
 
 app.register_blueprint(admin, url_prefix='/admin')
 app.register_blueprint(user, url_prefix='/user')
@@ -29,7 +34,8 @@ def login():
         user = db.query(SQ_User).filter(SQ_User.login==request.form['login']).first()
         if check_credential(user, request.form):
             session['logged_in'] = True
-            session['current_user'] = user.login            
+            session['current_user'] = user.login   
+            g.current_user = user.login         
             return redirect(url_for('user.show_user'))
         else:
             flash('Invalid login or password!')
