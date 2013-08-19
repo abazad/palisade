@@ -10,19 +10,24 @@
 	<div class="navbar">
 		<div class="navbar-inner">
 			<a class="brand" href="#">Palisade</a>
-			<ul class="nav">
-				<li class="active"><a href="{{ url_for('admin.show_users') }}">Users</a></li>
-			</ul>
-			<div id="current_user" class="pull-right">
-				{% if session.logged_in %}
-					<a href="#">{{ session.current_user}}</a>
-				{% else %}
-					<a href="#">Guest</a>
-				{% endif %}
-			</div>						
+			{% block nav_left%}
+			{% endblock %}
+			<ul  class="nav pull-right">
+				<li>
+					{% if session.logged_in %}
+						<a href="#">{{ session.current_user}}</a>
+					{% else %}
+						<a href="#">Guest</a>
+					{% endif %}
+				</li>
+				<li>
+					<a href="{{ url_for('logout') }}">Logout</a>
+				</li>
+			</ul>						
 		</div>
 	</div>
 {% endblock %}
+
 {% block alert %}
 	{% with messages = get_flashed_messages() %}
 	{% if messages %}

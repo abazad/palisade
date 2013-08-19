@@ -10,6 +10,7 @@ from palisade.ui.admin import admin
 from palisade.ui.user import user
 
 from jinja_filters import tomegabyte
+from decorators import login_required
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'jopa'
@@ -27,22 +28,27 @@ def check_credential(user, form):
         return False
 
 @app.route('/login', methods=['GET', 'POST'])
-def login():
+def login():    
     db = Session()
     form = LoginForm(request.form)
     if request.method == 'POST' and form.validate():
         user = db.query(SQ_User).filter(SQ_User.login==request.form['login']).first()
         if check_credential(user, request.form):
             session['logged_in'] = True
-            session['current_user'] = user.login   
-            g.current_user = user.login         
+            session['current_user'] = user.login                              
             return redirect(url_for('user.show_user'))
         else:
             flash('Invalid login or password!')
             return redirect(url_for('login'))
-    else:
-        return render_template('login.html', form=form) 
-        
+    else:        
+        return render_template('login.html', form=form, next=next) 
+
+@app.route('/logout', methods=['GET'])
+def logout():
+    session.pop('logged_in', None)
+    session.pop('current_user', None)
+    flash('You are were logged out!')
+    return redirect(url_for('login'))
 
 if __name__ == '__main__':
 #    print app.url_map

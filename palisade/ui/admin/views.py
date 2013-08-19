@@ -9,8 +9,11 @@ from palisade.db.schema import SQ_User
 from palisade.db.conn import Session
 from palisade.ui.forms import UserForm
 
+from palisade.ui.decorators import login_required
+
 #@admin.route('/', defaults={'page': 'index'})
 @admin.route('/user')
+@login_required
 def show_users():
     session = Session()
     users = session.query(SQ_User).all()
@@ -24,7 +27,8 @@ def add_user():
         user = SQ_User(form.first_name.data,
                        form.last_name.data,
                        form.login.data,
-                       form.password.data,                       
+                       form.password.data,
+                       form.email.data,                       
                        'A',
                        form.traffic_limit.data)
         session = Session()
