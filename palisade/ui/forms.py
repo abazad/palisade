@@ -18,5 +18,6 @@ class UserForm(Form):
     password = PasswordField('Password', [validators.Required()])
     password_confirm = PasswordField('Password confirmation', 
                                      [validators.Required()])
+    email = TextField('Email', [validators.Email(message='It must be email')])
     traffic_limit = IntegerField('Limit MB')
     

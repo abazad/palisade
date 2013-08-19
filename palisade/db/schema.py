@@ -10,21 +10,25 @@ class SQ_User(Base):
     id = Column(Integer, Sequence('sq_user_id_seq'), primary_key=True)
     first_name = Column(String(50))
     last_name = Column(String(50))
-    login = Column(String(50))
+    login = Column(String(50), unique=True)
     password = Column(String(250))
+    email = Column(String(250), unique=True)
     status = Column(String(3))
     traffic_limit = Column(Integer(9))
     
-    def __init__(self, first_name, last_name, login, password, status, traffic_limit):
+    def __init__(self, first_name, last_name, login, password, email, status, traffic_limit):
         self.first_name = first_name
         self.last_name = last_name
         self.login = login
         self.password = password
+        self.email = email
         self.status = status
         self.traffic_limit = traffic_limit
     
     def __repr__(self):
-        return "<SQ_USER('%s', '%s', '%s', '%s', '%s', '%s')>" % (self.first_name, self.last_name, self.login, 'secret', self.status, self.traffic_limit)
+        return "<SQ_USER('%s', '%s', '%s', '%s', '%s', '%s', '%s')>" % \
+            (self.first_name, self.last_name, self.login, 'secret',\
+             self.email, self.status, self.traffic_limit)
 
 
 class SQ_Access_Log_Data(Base):
@@ -40,7 +44,7 @@ class SQ_Access_Log_Data(Base):
     req_method = Column(String(10))
     user_name = Column(String(32))
     sq_hierarchy_status = Column(String(32))
-    server_ip = Column(String(255))
+    server_fqdn = Column(String(255))
     mime_type = Column(String(32))
     mime_type_desc = Column(String(32))
     url = Column(String(4000))
