@@ -4,7 +4,8 @@ Created on 24.07.2013
 @author: bova
 '''
 
-from wtforms import Form, TextField, PasswordField, IntegerField, HiddenField, validators
+from wtforms import Form, TextField, PasswordField, IntegerField, HiddenField, \
+                    BooleanField, validators
 
 class LoginForm(Form):
     login = TextField('Login', [validators.Required()])
@@ -19,5 +20,6 @@ class UserForm(Form):
     password_confirm = PasswordField('Password confirmation', 
                                      [validators.Required()])
     email = TextField('Email', [validators.Email(message='It must be email')])
+    is_admin = BooleanField('Administrator?')
     traffic_limit = IntegerField('Limit MB')
     

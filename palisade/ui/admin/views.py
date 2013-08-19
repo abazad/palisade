@@ -9,11 +9,12 @@ from palisade.db.schema import SQ_User
 from palisade.db.conn import Session
 from palisade.ui.forms import UserForm
 
-from palisade.ui.decorators import login_required
+from palisade.ui.decorators import login_required, admin_required
 
 #@admin.route('/', defaults={'page': 'index'})
 @admin.route('/user')
 @login_required
+@admin_required
 def show_users():
     session = Session()
     users = session.query(SQ_User).all()
@@ -21,6 +22,8 @@ def show_users():
     return render_template('admin/show_users.html', users=users)
 
 @admin.route('/user/add', methods=['GET', 'POST'])
+@login_required
+@admin_required
 def add_user():
     form = UserForm(request.form)
     if request.method == 'POST' and form.validate():
@@ -28,7 +31,8 @@ def add_user():
                        form.last_name.data,
                        form.login.data,
                        form.password.data,
-                       form.email.data,                       
+                       form.email.data,
+                       form.is_admin.data,                       
                        'A',
                        form.traffic_limit.data)
         session = Session()
@@ -40,6 +44,8 @@ def add_user():
 
 #TODO: add feedback after form validate
 @admin.route('/user/edit/<user_id>', methods=['GET', 'POST'])
+@login_required
+@admin_required
 def edit_user(user_id=None):
     session=Session()
     user = session.query(SQ_User).filter(SQ_User.id==user_id).first()
@@ -53,6 +59,8 @@ def edit_user(user_id=None):
     return render_template('admin/edit_user.html', form=form)
 
 @admin.route('/user/delete/<user_id>', methods=['GET'])
+@login_required
+@admin_required
 def delete_user(user_id):
     session = Session()
     user = session.query(SQ_User).filter(SQ_User.id == user_id).first()

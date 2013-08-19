@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Sequence, Date
+from sqlalchemy import Column, Integer, String, Sequence, Date, Boolean
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -13,22 +13,24 @@ class SQ_User(Base):
     login = Column(String(50), unique=True)
     password = Column(String(250))
     email = Column(String(250), unique=True)
+    is_admin = Column(Boolean())
     status = Column(String(3))
     traffic_limit = Column(Integer(9))
     
-    def __init__(self, first_name, last_name, login, password, email, status, traffic_limit):
+    def __init__(self, first_name, last_name, login, password, email, is_admin, status, traffic_limit):
         self.first_name = first_name
         self.last_name = last_name
         self.login = login
         self.password = password
         self.email = email
+        self.is_admin = is_admin
         self.status = status
         self.traffic_limit = traffic_limit
     
     def __repr__(self):
-        return "<SQ_USER('%s', '%s', '%s', '%s', '%s', '%s', '%s')>" % \
+        return "<SQ_USER('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')>" % \
             (self.first_name, self.last_name, self.login, 'secret',\
-             self.email, self.status, self.traffic_limit)
+             self.email, self.is_admin, self.status, self.traffic_limit)
 
 
 class SQ_Access_Log_Data(Base):

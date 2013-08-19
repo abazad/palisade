@@ -3,5 +3,8 @@
 {% block nav_left %}
 	<ul class="nav">
 		<li class="active"><a href="{{ url_for('user.show_user') }}">General</a></li>
+		{% if session.is_admin == True %}
+			<li class="active"><a href="{{ url_for('admin.show_users') }}">Admin</a></li>
+		{% endif %}
 	</ul>
 {% endblock %}

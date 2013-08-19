@@ -1,5 +1,5 @@
 {% from "_formhelpers.html" import render_field %}
-{% extends "layout.html" %}
+{% extends "admin/layout.html" %}
 
 {% block body %}
 {{ super() }}
@@ -14,6 +14,7 @@
 		{{ render_field(form.password_confirm) }}
 		{{ render_field(form.email) }}
 		{{ render_field(form.traffic_limit) }}
+		{{ render_field(form.is_admin) }}
 		<input class="btn" type="submit" value="Save">
 	</form>
 {% endblock %}

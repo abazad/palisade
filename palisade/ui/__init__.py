@@ -35,7 +35,8 @@ def login():
         user = db.query(SQ_User).filter(SQ_User.login==request.form['login']).first()
         if check_credential(user, request.form):
             session['logged_in'] = True
-            session['current_user'] = user.login                              
+            session['current_user'] = user.login   
+            session['is_admin'] = user.is_admin                           
             return redirect(url_for('user.show_user'))
         else:
             flash('Invalid login or password!')
@@ -47,6 +48,7 @@ def login():
 def logout():
     session.pop('logged_in', None)
     session.pop('current_user', None)
+    session.pop('is_admin', None)
     flash('You are were logged out!')
     return redirect(url_for('login'))
 
