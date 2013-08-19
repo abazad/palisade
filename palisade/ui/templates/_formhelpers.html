@@ -1,13 +1,23 @@
 {% macro render_field(field, icon=None) %}
-<div class="control-group">	
-	{{ field.label(class="control-label") }}
-	<div class="controls">
-		{% if icon %}
-<div class="input-prepend"><span class="add-on"><i class="{{ icon }}"></i></span></div>
-		{% endif %}
-<!--  input class="span2" id="{{ field.id }}" type="text"-->
-		{{ field(class='span2')|safe }}
-			
+
+{% if field.errors %}
+	<div class="control-group error">
+{% else %}	
+	<div class="control-group">
+{% endif %}
+		{{ field.label(class="control-label") }}
+		<div class="controls">
+			{% if icon %}
+				<div class="input-prepend"><span class="add-on"><i class="{{ icon }}"></i></span></div>
+			{% endif %}
+	<!--  input class="span2" id="{{ field.id }}" type="text"-->
+			{{ field(class='span2')|safe }}
+			<span class="help-inline">
+				{% for error in field.errors %}
+					{{ error }}
+				{% endfor %}
+			</span>
+				
+		</div>
 	</div>
-</div>
 {% endmacro %}
