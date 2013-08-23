@@ -55,10 +55,15 @@ Create Or Replace Package Body Sq_Lost_Pwd Is
   End Create_Job;
 
   Procedure Start_Job Is
+    Job_Already_Exist_Error Exception;
+    Pragma Exception_Init(Job_Already_Exist_Error, -27477);
   Begin
     Create_Job;
     Dbms_Scheduler.Enable(Name => 'RECOVERY_PASSWORD_JOB');
     Commit;
+  Exception
+    When Job_Already_Exist_Error Then
+      Null;
   End Start_Job;
 
 End Sq_Lost_Pwd;
