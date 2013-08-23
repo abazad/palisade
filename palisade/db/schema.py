@@ -78,3 +78,21 @@ class SQ_Access_Log_Data(Base):
          self.req_method, self.user_name, self.sq_hierarchy_status, 
          self.server_ip, self.mime_type, self.mime_type_desc, 
          self.url, self.url_hostname)
+
+class SQ_Lost_Password(Base):
+    __tablename__='SQ_LOST_PASSWORD'
+    id = Column(Integer(9), Sequence('sq_lost_password_seq'), primary_key=True)
+    created_on = Column(Date)
+    email = Column(String(250))
+    state = Column(String(50))
+    secret_key = Column(String(32))
+    
+    def __init__(self, created_on, email, state, secret_key):
+        self.created_on = created_on
+        self.email = email
+        self.state = state
+        self.secret_key = secret_key
+    
+    def __repr__(self):
+        return "<SQ_LOST_PASSWORD('%s', '%s', '%s', '%s')>" %\
+             (self.created_on, self.email, self.state, self.secret_key)

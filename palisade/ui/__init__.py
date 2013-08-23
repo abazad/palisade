@@ -33,7 +33,7 @@ def login():
     form = LoginForm(request.form)
     if request.method == 'POST' and form.validate():
         user = db.query(SQ_User).filter(SQ_User.login==request.form['login']).first()
-        if check_credential(user, request.form):
+        if user and check_credential(user, request.form):
             session['logged_in'] = True
             session['current_user'] = user.login   
             session['is_admin'] = user.is_admin                           
@@ -54,4 +54,4 @@ def logout():
 
 if __name__ == '__main__':
 #    print app.url_map
-    app.run(debug=True)
+    app.run('0.0.0.0', debug=True)
