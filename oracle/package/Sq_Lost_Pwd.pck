@@ -5,6 +5,8 @@ Create Or Replace Package Sq_Lost_Pwd Is
   -- Purpose : Recovery lost passwords
   Procedure Send_Notif(Lost_Pwd In Sq_Lost_Password%Rowtype);
   Procedure Recovery;
+  Procedure Create_Job;
+  Procedure Start_Job;
 
 End Sq_Lost_Pwd;
 /
@@ -36,11 +38,28 @@ Create Or Replace Package Body Sq_Lost_Pwd Is
 
   Procedure Recovery Is
   Begin
-    For Lost_Pwd In (Select * From Sq_Lost_Password where state='NEW') Loop
+    For Lost_Pwd In (Select * From Sq_Lost_Password Where State = 'NEW') Loop
       Send_Notif(Lost_Pwd);
       Change_State(Lost_Pwd, 'SENT');
     End Loop;
   End Recovery;
+
+  Procedure Create_Job Is
+  Begin
+    Dbms_Scheduler.Create_Job(Job_Name        => 'RECOVERY_PASSWORD_JOB',
+                              Job_Type        => 'STORED_PROCEDURE',
+                              Job_Action      => 'sq_lost_pwd.recovery',
+                              Repeat_Interval => 'sysdate+1/1440');
+    Commit;
+  
+  End Create_Job;
+
+  Procedure Start_Job Is
+  Begin
+    Create_Job;
+    Dbms_Scheduler.Enable(Name => 'RECOVERY_PASSWORD_JOB');
+    Commit;
+  End Start_Job;
 
 End Sq_Lost_Pwd;
 /

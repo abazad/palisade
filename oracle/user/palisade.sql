@@ -17,3 +17,6 @@ alter user PALISADE
 -- for working with external files
 execute dbms_java.grant_permission('PALISADE', 'SYS:java.io.FilePermission', '/u02/export/palisade', 'read' );
 execute dbms_java.grant_permission('PALISADE', 'java.io.FilePermission', '<<ALL FILES>>', 'read ,write, execute, delete');
+
+-- Object Grants
+grant execute on dbms_scheduler to palisade;
