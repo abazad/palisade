@@ -23,3 +23,11 @@ class UserForm(Form):
     is_admin = BooleanField('Administrator?')
     traffic_limit = IntegerField('Limit MB')
     
+class LostPasswordForm(Form):
+    email = TextField('Email', [validators.Required(), validators.Email()])
+
+class EditPasswordForm(Form):
+    password = PasswordField('New Password', [validators.Required()])
+    confirm_password = PasswordField('Confirm Password', [validators.Required()])
+    
+        
