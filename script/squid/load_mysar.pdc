@@ -1,0 +1,24 @@
+Begin
+  For s In (Select * From Hr.Core_Users) Loop
+    Insert Into Sq_User
+      (Id,
+       First_Name,
+       Last_Name,
+       Login,
+       Password,
+       Is_Admin,
+       Status,
+       Traffic_Limit)
+    Values
+      (Sq_User_Id_Seq.Nextval,
+       s.Firstname,
+       s.Lastname,
+       s.Login,
+       s.Password,
+       0,
+       s.User_State,
+       s.Trafficlimit);
+  End Loop;
+  Commit;
+End;
+/
