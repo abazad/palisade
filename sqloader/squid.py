@@ -94,7 +94,7 @@ class AccessLogRow(object):
         logformat palisade %ts.%03tu %6tr %>a %Ss/%03>Hs %<st %rm %un %Sh %<A %mt %45ru
     '''
     def __init__(self, line):
-        print line
+#        print line
         self.tokens = line.split()
         self.parse()
     

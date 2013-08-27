@@ -20,3 +20,4 @@ execute dbms_java.grant_permission('PALISADE', 'java.io.FilePermission', '<<ALL 
 
 -- Object Grants
 grant execute on dbms_scheduler to palisade;
+grant create job to palisade;

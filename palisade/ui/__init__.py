@@ -27,6 +27,10 @@ def check_credential(user, form):
     else:
         return False
 
+@app.route('/', methods=['GET'])
+def default():
+    return redirect(url_for('user.show_user'))
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():    
     db = Session()
