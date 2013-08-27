@@ -1,0 +1,7 @@
+pip install flask sqlalchemy wtForms
+
+groupadd palisade
+useradd -g palisade -m palisade
+
+mkdir /home/palisade/app
+* copy palisade package to /home/palisade/app

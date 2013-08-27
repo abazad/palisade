@@ -1,0 +1,16 @@
+/etc/squid/squid.conf
+logformat palisade %ts.%03tu %6tr %>a %Ss/%03>Hs %<st %rm %un %Sh %<A %mt %45ru
+access_log /var/log/squid3/palisade.log palisade
+
+* copy source of sqloader to server
+
+python setup_sqldr.py install
+mkdir /etc/sqloader
+mkdir /var/log/palisade
+sqloader /etc/sqloader/palisade.conf
+* edit /etc/sqloader/palisade.conf
+
+
+* Crontab (root)
+#Palisade SQLoader
+*/5 * * * * /usr/bin/sqloader /etc/sqloader/palisade.conf >/var/log/palisade/cron_sqloader.log 2>&1
