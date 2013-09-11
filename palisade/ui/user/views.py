@@ -14,6 +14,7 @@ from palisade.ui.decorators import login_required
 from palisade.ui.forms import LostPasswordForm, EditPasswordForm
 from palisade.utils import id_generator
 
+
 @user.route('/', methods=['GET'])
 @login_required
 def show_user():
@@ -41,19 +42,29 @@ def show_user():
     bytes_sum['today'] = bytes and bytes or 0
     return render_template('user/show_user.html', user=user, bytes_sum=bytes_sum)
 
+def is_email_exist(email):
+    db = Session()
+    user = db.query(SQ_User).filter(SQ_User.email==email).all()
+    if len(user) > 0:
+        return True
+    return False
+
 @user.route('/lost_password', methods=['GET', 'POST'])
 def lost_password():
-    form = LostPasswordForm(request.form)
-    if request.method == 'POST' and form.validate():
-        lost_password = SQ_Lost_Password(datetime.now(), 
-                                         form.email.data,
-                                         'NEW',
-                                         id_generator(32))   
-        db = Session()
-        db.add(lost_password)
-        db.commit()
-        flash('Check your mailbox in a few minutes!')
-        return redirect(url_for('login'))
+    form = LostPasswordForm(request.form)         
+    if request.method == 'POST':
+        if form.validate() and is_email_exist(form.email.data):
+            lost_password = SQ_Lost_Password(datetime.now(), 
+                                             form.email.data,
+                                             'NEW',
+                                             id_generator(32))   
+            db = Session()
+            db.add(lost_password)
+            db.commit()
+            flash('Check your mailbox in a few minutes!')
+            return redirect(url_for('login'))
+        else:
+            flash("Invalid email or email doesn't exist")            
     return render_template('user/lost_password.html', form=form)
 
 def is_recover_args_valid(secret_key, email):
