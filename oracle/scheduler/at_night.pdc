@@ -1,0 +1,5 @@
+Begin
+  Dbms_Scheduler.Create_Schedule('atNight',
+                                 Repeat_Interval => 'FREQ=daily;BYHOUR=0;BYMINUTE=30;BYSECOND=1');
+End;
+/

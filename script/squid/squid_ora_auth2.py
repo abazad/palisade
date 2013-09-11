@@ -37,7 +37,7 @@ if __name__ == '__main__':
             result = "ERR split error"        
         
         try:            
-            cursor.execute('''select login, password from SQ_USER where login=:login''', login=login)
+            cursor.execute('''select login, password from SQ_USER where login=:login and status=:status''', login=login, status='A')
             user = cursor.fetchone()
             conn.close()            
         except:
