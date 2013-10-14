@@ -72,5 +72,13 @@ def delete_user(user_id):
         flash("User doesn't exist")    
     return redirect(url_for('.show_users'))
 
+@admin.route('/report', methods=['GET'])
+def report_index():
+    return render_template('admin/report_index.html')
+
+@admin.route('/report/get/<report_id>', methods=['GET', 'POST'])
+def get_report(report_id):
+    return render_template('admin/get_report.html')
+
     
     

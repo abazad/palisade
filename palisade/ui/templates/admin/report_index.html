@@ -1,0 +1,9 @@
+{% extends "admin/layout.html" %}
+{% block title %}Palisade.Admin.Reports{% endblock %}
+{% block body %}
+	{{ super() }}
+{% endblock %}
+
+{% block container %}
+	<a href=" {{ url_for('.get_report', report_id='1') }}">Report1</a>
+{% endblock %}

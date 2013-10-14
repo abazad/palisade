@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Sequence, Date, Boolean
+from sqlalchemy import Column, Integer, String, Sequence, Date, Boolean, Text
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -96,3 +96,19 @@ class SQ_Lost_Password(Base):
     def __repr__(self):
         return "<SQ_LOST_PASSWORD('%s', '%s', '%s', '%s')>" %\
              (self.created_on, self.email, self.state, self.secret_key)
+
+class SQ_Report_Data(Base):
+    __tablename__ = 'SQ_REPORT_DATA'
+    id = Column(Integer(9), Sequence('sq_report_data_seq'), primary_key=True)
+    created_on = Column(Date)
+    report_name = Column(String(150))
+    data = Column(Text(6000))
+    
+    def __init__(self, created_on, report_name, data):
+        self.created_on = created_on
+        self.report_name = report_name
+        self.data = data
+    
+    def __repr__(self):
+        return "<SQ_REPORT_DATA('%s', '%s')>" % (self.created_on, self.report_name)
+        
