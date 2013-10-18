@@ -111,4 +111,19 @@ class SQ_Report_Data(Base):
     
     def __repr__(self):
         return "<SQ_REPORT_DATA('%s', '%s')>" % (self.created_on, self.report_name)
+
+class SQ_Report_XSL(Base):
+    __tablename__ = 'SQ_REPORT_XSL'
+    id = Column(Integer(9), Sequence('sq_report_xsl_seq'), primary_key=True)
+    report_name = Column(String(50))
+    data = Column(Text(6000))
+    modified_on = Column(Date)
+    
+    def __init__(self, report_name, data, modified_on):
+        self.report_name = report_name
+        self.data = data
+    
+    def __repr__(self):
+        return "<SQ_REPORT_XSL('%s')>" % self.report_name
+    
         
