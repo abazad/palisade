@@ -102,15 +102,17 @@ class SQ_Report_Data(Base):
     id = Column(Integer(9), Sequence('sq_report_data_seq'), primary_key=True)
     created_on = Column(Date)
     report_name = Column(String(150))
+    state = Column(String(50))
     data = Column(Text(6000))
     
-    def __init__(self, created_on, report_name, data):
+    def __init__(self, created_on, report_name, state, data):
         self.created_on = created_on
         self.report_name = report_name
+        self.state = state
         self.data = data
     
     def __repr__(self):
-        return "<SQ_REPORT_DATA('%s', '%s')>" % (self.created_on, self.report_name)
+        return "<SQ_REPORT_DATA('%s', '%s', '%s')>" % (self.created_on, self.report_name, self.state)
 
 class SQ_Report_XSL(Base):
     __tablename__ = 'SQ_REPORT_XSL'

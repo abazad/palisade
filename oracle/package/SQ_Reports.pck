@@ -6,6 +6,7 @@ Create Or Replace Package Sq_Reports Is
 
   Function Report_1_Tab(i_Login In Sq_User.Login%Type) Return Xmltype;
   Procedure Report_1;
+  Procedure Run_Report(i_Report_Name In Varchar2);
 
 End Sq_Reports;
 /
@@ -32,11 +33,20 @@ Create Or Replace Package Body Sq_Reports Is
   End Report_1_Tab;
 
   Procedure Report_1 Is
-    v_Xmldata Xmltype;
-    v_Xsl     Clob;
-    v_Html    Xmltype;
+    v_Xmldata   Xmltype;
+    v_Xsl       Clob;
+    v_Html      Xmltype;
+    v_Report_Id Sq_Report_Data.Id%Type;
   Begin
-    For r In (Select Login From Sq_User order by login) Loop
+    -- Prepare Report processing
+    Select Sq_Report_Data_Seq.Nextval Into v_Report_Id From Dual;
+  
+    Insert Into Sq_Report_Data
+    Values
+      (v_Report_Id, Sysdate, 'report_1', 'RUNNING', Null);
+    Commit;
+    -- Make Report
+    For r In (Select Login From Sq_User Order By Login) Loop
       Select Xmlconcat(v_Xmldata, Report_1_Tab(r.Login))
         Into v_Xmldata
         From Dual;
@@ -48,11 +58,19 @@ Create Or Replace Package Body Sq_Reports Is
      Where Report_Name = 'report_1';
     -- Transform XML to HTML
     v_Html := v_Xmldata.Transform(Xmltype(v_Xsl));
-    Insert Into Sq_Report_Data
-    Values
-      (Sq_Report_Data_Seq.Nextval, Sysdate, 'rep1', v_Html.Getclobval());
-    Commit;
+    -- Finish report processing
+    Update Sq_Report_Data
+       Set State = 'FINISHED', Data = v_Html.Getclobval()
+     Where Id = v_Report_Id;
   
   End Report_1;
+
+  Procedure Run_Report(i_Report_Name In Varchar2) Is
+  Begin
+    Dbms_Scheduler.Create_Job(Job_Name   => i_Report_Name,
+                              Job_Type   => 'STORED_PROCEDURE',
+                              Job_Action => 'sq_reports.' || i_Report_Name);
+    Dbms_Scheduler.Enable(Name => i_Report_Name);
+  End Run_Report;
 End Sq_Reports;
 /

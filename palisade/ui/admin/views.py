@@ -5,7 +5,7 @@ Created on Jul 16, 2013
 '''
 from flask import render_template, request, redirect, url_for, flash
 from palisade.ui.admin import admin
-from palisade.db.schema import SQ_User
+from palisade.db.schema import SQ_User, SQ_Report_Data
 from palisade.db.conn import Session
 from palisade.ui.forms import UserForm
 
@@ -78,7 +78,24 @@ def report_index():
 
 @admin.route('/report/get/<report_id>', methods=['GET', 'POST'])
 def get_report(report_id):
-    return render_template('admin/get_report.html')
+    session = Session()
+    reports = session.query(SQ_Report_Data).\
+                filter(SQ_Report_Data.report_name==report_id).\
+                all()
+    return render_template('admin/get_report.html', reports=reports, report_name=report_id)
+
+@admin.route('/report/make/<report_id>', methods=['GET', 'POST'])
+def make_report(report_id):
+    session = Session()
+    session.execute("begin sq_reports.run_report('%s');end;" % report_id)
+    return redirect(url_for('.get_report', report_id=report_id))
+
+@admin.route('/report/show/<report_id>', methods=['GET'])
+def show_report(report_id):
+    session = Session()
+    report = session.query(SQ_Report_Data).filter(SQ_Report_Data.id==report_id).one()
+    return render_template('admin/show_report.html', report=report)
+    
 
     
     
