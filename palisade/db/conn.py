@@ -4,6 +4,9 @@ Created on Jul 14, 2013
 @author: bova
 '''
 
+#TODO: sqlalchemy.exc.TimeoutError \
+#TimeoutError: QueuePool limit of size 5 overflow 10 reached, connection timed out, timeout 30
+
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 

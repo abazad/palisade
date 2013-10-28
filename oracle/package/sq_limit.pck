@@ -7,6 +7,7 @@ Create Or Replace Package Sq_Limit Is
   Procedure Traffic_Limit_Checker;
   Procedure Unlock_Users;
   Procedure Start_Job;
+  Procedure Enable_Job;
   Procedure Create_Job;
   Procedure Stop_Job;
 End Sq_Limit;
@@ -33,19 +34,23 @@ Create Or Replace Package Body Sq_Limit Is
     v_Traffic_Limit   Integer;
     v_Traffic_Expense Integer;
     Cur_Exe           Integer;
+    c_Time_Low_Bound  Constant Varchar2(255) := ' 8'; -- Calc traffic only between 8:00 and 20:00
+    c_Time_High_Bound Constant Varchar2(255) := ' 20';
   Begin
   
-    v_Per_User_Traff := '
-              Select t.User_Name, Round(Sum(t.Bytes) / (1024 * 1024))
+    v_Per_User_Traff := 'Select t.User_Name, Round(Sum(t.Bytes) / (1024 * 1024))
         From Sq_Access_Log_Data t
-       Where t.Access_Time >= Trunc(Sysdate)       
+       Where t.Access_Time Between To_Date(To_Char(Trunc(Sysdate)) || :c_Time_Low_Bound, ''DD-MON-YY HH24'') 
+         And To_Date(To_Char(Trunc(Sysdate)) || :c_Time_High_Bound, ''DD-MON-YY HH24'')       
          And t.User_Name In (Select u.Login From SQ_User u)
-         and t.sq_req_status not in (' || '''' ||
-                        'TCP_DENIED' || '''' || ')         
+         and t.sq_req_status not in (:x)         
        Group By t.User_Name';
   
     Cur := Dbms_Sql.Open_Cursor;
     Dbms_Sql.Parse(Cur, v_Per_User_Traff, Dbms_Sql.Native);
+    Dbms_Sql.Bind_Variable(Cur, ':c_Time_Low_Bound', c_Time_Low_Bound);
+    Dbms_Sql.Bind_Variable(Cur, ':c_Time_High_Bound', c_Time_High_Bound);
+    Dbms_Sql.Bind_Variable(Cur, ':x', 'TCP_DENIED');
     Dbms_Sql.Define_Column(Cur, 1, v_Authuser, 200);
     Dbms_Sql.Define_Column(Cur, 2, v_Traffic_Expense);
     Cur_Exe := Dbms_Sql.Execute(Cur);
@@ -96,16 +101,22 @@ Create Or Replace Package Body Sq_Limit Is
     Pragma Exception_Init(Job_Already_Exist_Error, -27477);
   Begin
     Create_Job;
+    Enable_Job;
+  Exception
+    When Job_Already_Exist_Error Then
+      Enable_Job;
+    
+  End Start_Job;
+
+  Procedure Enable_Job Is
+  Begin
     -- Run limit checker
     Dbms_Scheduler.Enable(Name => 'traffic_limit_checker_job');
     -- Squid User Unlocker
     Dbms_Scheduler.Enable(Name => 'squid_Unlock_Job');
     Commit;
-  Exception
-    When Job_Already_Exist_Error Then
-      Null;
-    
-  End Start_Job;
+  
+  End Enable_Job;
 
   --===============================
   -- Процедура создания Job-ов
