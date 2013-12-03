@@ -39,6 +39,7 @@ def add_user():
         session.add(user)
         session.commit()
         flash("User successfully added!")
+        session.close()
         return redirect(url_for('.show_users'))    
     return render_template('admin/add_user.html', form=form)
 
@@ -54,7 +55,8 @@ def edit_user(user_id=None):
         user.first_name = form.first_name.data
         user.last_name = form.last_name.data
         user.traffic_limit = form.traffic_limit.data
-        session.commit()        
+        session.commit()      
+        session.close()  
         return redirect(url_for('.show_users'))
     return render_template('admin/edit_user.html', form=form)
 
@@ -67,6 +69,7 @@ def delete_user(user_id):
     if user:
         session.delete(user)
         session.commit()
+        session.close()
         flash("User successfully deleted.")
     else:
         flash("User doesn't exist")    
@@ -82,18 +85,21 @@ def get_report(report_id):
     reports = session.query(SQ_Report_Data).\
                 filter(SQ_Report_Data.report_name==report_id).\
                 all()
+    session.close()
     return render_template('admin/get_report.html', reports=reports, report_name=report_id)
 
 @admin.route('/report/make/<report_id>', methods=['GET', 'POST'])
 def make_report(report_id):
     session = Session()
     session.execute("begin sq_reports.run_report('%s');end;" % report_id)
+    session.close()
     return redirect(url_for('.get_report', report_id=report_id))
 
 @admin.route('/report/show/<report_id>', methods=['GET'])
 def show_report(report_id):
     session = Session()
     report = session.query(SQ_Report_Data).filter(SQ_Report_Data.id==report_id).one()
+    session.close()
     return render_template('admin/show_report.html', report=report)
     
 

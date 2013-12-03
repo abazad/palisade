@@ -40,6 +40,7 @@ def show_user():
                         .filter(SQ_Access_Log_Data.access_time>=today)\
                         .scalar()
     bytes_sum['today'] = bytes and bytes or 0
+    db.close()
     return render_template('user/show_user.html', user=user, bytes_sum=bytes_sum)
 
 def is_email_exist(email):
@@ -73,6 +74,7 @@ def is_recover_args_valid(secret_key, email):
         lost_pwd = db.query(SQ_Lost_Password).\
                     filter(SQ_Lost_Password.secret_key==secret_key).\
                     first()
+        db.close()
         if lost_pwd.email == email:
             return True
     return False
@@ -98,6 +100,7 @@ def edit_password():
         flash('Your password updated successful!')
         session.pop('secret_key', None)
         session.pop('email', None)
+        db.close()
         return redirect(url_for('login'))
     else:
         flash('Your password recovery code is invalid')
