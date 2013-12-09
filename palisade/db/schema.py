@@ -1,9 +1,11 @@
-from sqlalchemy import Column, Integer, String, Sequence, Date, Boolean, Text
+from sqlalchemy import Column, Integer, String, Sequence, Date, Boolean, Text, DateTime
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
-
+#------------
+#Squid module
+#------------
 class SQ_User(Base):
     __tablename__ = 'sq_user'
     
@@ -128,4 +130,25 @@ class SQ_Report_XSL(Base):
     def __repr__(self):
         return "<SQ_REPORT_XSL('%s')>" % self.report_name
     
-        
+
+#------------        
+#WPump module
+#------------
+class WPDownload(Base):
+    __tablename__ = 'wp_download'
+    
+    id = Column(Integer, Sequence('wp_download_seq'), primary_key=True)
+    owner_id = Column(Integer)
+    url = Column(String(2000))
+    size = Column(Integer(12))
+    state = Column(String(50))
+    created_on = Column(DateTime)    
+    size_completed = Column(Integer)
+    
+    def __init__(self, url, owner_id, state=download_state['new']):
+        self.url = url
+        self.email = email
+        self.state = state
+    
+    def __repr__(self):
+        return "<WpumpTask('%s', '%s', '%s', %s)>" % (self.id, self.url, self.email, self.state)
