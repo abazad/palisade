@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Sequence, Date, Boolean, Text, DateTime
+from sqlalchemy import Column, Integer, String, Sequence, Date, Boolean, Text, DateTime, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
@@ -134,21 +134,45 @@ class SQ_Report_XSL(Base):
 #------------        
 #WPump module
 #------------
+class WPDownloadState(Base):
+    __tablename__ = 'wp_download_state'
+    
+    id = Column(Integer, primary_key=True)
+    name = Column(String(50))
+    
+    def __init__(self, name):
+        self.name = name
+    
+    def __repr__(self):
+        return "<WPDownloadState('%s')>" % self.name
+    
+
 class WPDownload(Base):
     __tablename__ = 'wp_download'
     
     id = Column(Integer, Sequence('wp_download_seq'), primary_key=True)
-    owner_id = Column(Integer)
     url = Column(String(2000))
-    size = Column(Integer(12))
-    state = Column(String(50))
-    created_on = Column(DateTime)    
-    size_completed = Column(Integer)
+    owner_id = Column(Integer, ForeignKey('sq_user.id'))
+    created_on = Column(DateTime)
+    state = Column(Integer, ForeignKey('wp_download_state.id'))
+    bytes = Column(Integer(12))
+    bytes_completed = Column(Integer(12))
     
-    def __init__(self, url, owner_id, state=download_state['new']):
+    
+    def __init__(self, url, owner_id, created_on, state=1, bytes=0, bytes_completed=0):
         self.url = url
-        self.email = email
+        self.owner_id = owner_id
+        self.created_on = created_on
         self.state = state
+        self.bytes = bytes
+        self.bytes_completed = bytes_completed
+                
     
     def __repr__(self):
-        return "<WpumpTask('%s', '%s', '%s', %s)>" % (self.id, self.url, self.email, self.state)
+        return "<WPDownload('%s', '%s', %s, %s)>" % (self.id, self.url, self.owner_id, self.state)
+
+#class WPNotification(Base):
+#    __tablename__ = 'wp_notification'
+#    
+#    def __init__(self, download_id, recipient, delivery_method):
+#        pass

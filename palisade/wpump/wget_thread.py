@@ -10,18 +10,31 @@ import requests
 from requests.auth import HTTPProxyAuth
 import threading
 import logging
-import database as db
 import time
 from structure import Downloads, EmptyQueueError, FINISHED, STARTED, download_state
 from Tkinter import *
 from notification import Mail
-import os
 from xmpp_send import SendMsgBot
+from palisade.db.conn import Session
+from palisade.db.schema import WPDownload
 
 THREAD_COUNT = 3
 IS_RUNNING = True
 OUTPUT_DIR='X:\download'
+CHUNK_SIZE = 1024000
 
+ADMIN_XMPP_ID = u'vladimir@fido.uz'
+
+class State(object):
+    new = 1
+    accepted = 2
+    scheduled = 3
+    active = 4
+    pause = 5
+    success = 6
+    failure = 7
+    new1 = 11#TODO: need improve notification module 
+    rejected = 12
 
             
 class WgetState:
@@ -30,120 +43,99 @@ class WgetState:
 class WgetWorker(threading.Thread):
     '''Download specified url    
     '''
-    def __init__(self, s, downloads):
+    def __init__(self, s):
         threading.Thread.__init__(self)        
-        self.s = s
-        self.downloads = downloads      
-        self.my_name = ''  
-           
-    def pump(self):
-#        r = requests.get('http://megasoft.uz/get/4400?1362552145', proxies=proxies, auth=auth, stream=True)        
-#TODO: Ignore ssl cert error
-#SSLError: [Errno 1] _ssl.c:490: error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
-        r = requests.get(self.task.url, stream=True)
-        file_name = os.path.basename(r.url)
+        self.s = s          
+        self.my_name = ''
+        self.download = None
+
+    def log(self):        
+        downloaded_pct = round(self.download.bytes_completed/self.download.bytes*100)
+        logging.info('[%s] %s%%' % (self.file_name, downloaded_pct))
+
+    def get_file_size(self):
         try:
-            file_size = float(r.headers['content-length'])
+            self.download.bytes = float(self.r.headers['content-length'])
         except:
-            logging.debug("File Size unknown")
-            logging.error('%s' % sys.exc_info()[0])
-            file_size = float(1024000000)        
-        logging.debug('Start downloading: \
-URL: %s \
-File Name: %s \
-File Size: %s' % (self.task.url, file_name, file_size))  
-        chunk_size = 1024000
-        downloaded_size = 0        
+            logging.error("File Size unknown",exc_info=True)
+            self.download.bytes = float(1024000000)
+                       
+    def pump(self):   
+        self.r = requests.get(self.download.url, stream=True)
+        self.file_name = os.path.basename(self.r.url)     
+        self.get_file_size()    
+        
+        logging.info('Start downloading:\n URL: %s \n File Name: %s \n File Size: %s' \
+                      % (self.download.url, self.file_name, self.download.bytes))  
             
-        with open(os.path.join(OUTPUT_DIR,file_name),'wb') as fh:
-            for data in r.iter_content(chunk_size):
+        with open(os.path.join(OUTPUT_DIR, self.file_name),'wb') as fh:
+            for data in self.r.iter_content(CHUNK_SIZE):
                 if IS_RUNNING == False:
                     break
                 fh.write(data)
-                downloaded_size += chunk_size
-                downloaded_pct = round(downloaded_size/file_size*100)
-                logging.debug('[%s] %s%%' % (file_name, downloaded_pct))
-
+                self.download.bytes_completed += CHUNK_SIZE
         
-    def do_work(self):
+
+    def execute(self):
         logging.debug('Try to acquire download queue...')
         with self.s:
             logging.debug('Queue acquired')
-            self.downloads.update_task_attr(self.task.id, 'worker', self.my_name)
+            self.download.state = State.active
             self.pump()
-            self.downloads.update_task_attr(self.task.id, 'state', download_state['completed'])
+            self.download.state = State.success
             
     def run(self):
         self.my_name = threading.currentThread().getName()        
         while WgetState.IS_RUNNING:
-            logging.debug('WgetWorker.run IS_RUNNING=%s' % str(WgetState.IS_RUNNING))
-            try:
-                self.task = self.downloads.get_url(self.my_name)
-            except EmptyQueueError:
-                pass                
+            self.download = None
+            conn = Session()
+            logging.debug('WgetWorker.run IS_RUNNING=%s' % 'WOrker')
+            self.download = conn.query(WPDownload).\
+                            filter(WPDownload.state==State.accepted).\
+                            first()   
+            if self.download:
+                self.execute()
+                conn.commit()
             else:
-                self.do_work()
-            finally:
                 time.sleep(2)
+            conn.close()
 
-class WgetDB(threading.Thread):
-    def __init__(self, downloads):
-        threading.Thread.__init__(self)
-        self.downloads = downloads      
-        self.conn = db.Session()  
-    
-    def get_new(self):
-        rows = self.conn.query(db.WpumpTask).filter_by(state=download_state['accepted'])
-#            self.db.cursor.execute('select * from wpump_task where state=?', 'N')
-        for row in rows:                            
-            logging.debug('New URL found in database %s' % row.url)
-            self.downloads.put(row)
-            row.state = download_state['active']
-#            self.db.cursor.execute("""update wpump_task set state='Started' where state='N'""")
-        self.conn.commit()
-    
-    def update_statistic(self):
-        pass
-            
-    def run(self):
-        while WgetState.IS_RUNNING:
-            self.get_new() 
-            time.sleep(2)
 
 class WgetNotif(threading.Thread):
-    def __init__(self, downloads):
-        threading.Thread.__init__(self)
-        self.downloads = downloads
+    def __init__(self):
+        threading.Thread.__init__(self)        
+        self.download = None
 #        self.mailer = Mail()
         self.xmpp = SendMsgBot()
-        self.conn = db.Session()
+        self.conn = Session()
     
     def do_work(self, rcpt=None):
-        send_to = rcpt and rcpt or self.task.email
+        send_to = rcpt and rcpt or self.download.email
         new_url = '\\\\nserver\in_out\download\%s' % os.path.basename(self.task.url)
 #        self.mailer.send([self.task.email], 'WgetNotif', new_url)
         self.xmpp.chat(send_to, new_url)
     
     def notify_admin(self):
-        admin_xmpp_id = u'vladimir@fido.uz'
-        rows = self.conn.query(db.WpumpTask).filter_by(state=download_state['new'])
-#            self.db.cursor.execute('select * from wpump_task where state=?', 'N')
-        for row in rows:                            
-            logging.debug('New URL found in database %s' % row.url)
-            self.xmpp.chat(admin_xmpp_id, row.url)            
-            row.state = download_state['new1']
+        downloads = self.conn.query(WPDownload).\
+                        filter(WPDownload.state==State.new)
+
+        for download in downloads:                            
+            logging.info('New URL found in database %s' % download.url)
+            self.xmpp.chat(ADMIN_XMPP_ID, download.url)            
+            download.state = State.new1
 #            self.db.cursor.execute("""update wpump_task set state='Started' where state='N'""")
-        self.conn.commit()
+        self.conn.commit()        
         time.sleep(3)
         
     
     def notify_client(self):
         try:
-            self.task = self.downloads.get_completed()
-        except EmptyQueueError:                
             pass
+        except:
+            pass        
         else:
-            self.do_work()
+            pass
+#            self.do_work()
         finally:
             time.sleep(3)
 
@@ -158,29 +150,23 @@ class WgetNotif(threading.Thread):
 class WgetManager(object):
     def __init__(self):        
         self.s = threading.Semaphore(2)
-        self.l = threading.Lock()
-        self.downloads = Downloads()
+        self.l = threading.Lock()        
         self.threads = []
     
     def init_workers(self):
         for i in range(THREAD_COUNT):
-            t = WgetWorker(self.s, self.downloads)
+            t = WgetWorker(self.s)
             self.threads.append(t)
             t.start()
-    
-    def init_db(self):
-        t = WgetDB(self.downloads)
-        self.threads.append(t)
-        t.start()
-    
+   
+        
     def init_notification(self):
-        t = WgetNotif(self.downloads)
+        t = WgetNotif()
         self.threads.append(t)
         t.start()
         
     def run(self):
         self.init_workers()
-        self.init_db()
         self.init_notification()
     
     def stop(self):

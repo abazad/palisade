@@ -8,6 +8,7 @@ from forms import LoginForm
     
 from palisade.ui.admin import admin
 from palisade.ui.user import user
+from palisade.ui.wpump import wpump
 
 from jinja_filters import tomegabyte
 from decorators import login_required
@@ -20,6 +21,7 @@ app.jinja_env.filters['tomegabyte'] = tomegabyte
 
 app.register_blueprint(admin, url_prefix='/admin')
 app.register_blueprint(user, url_prefix='/user')
+app.register_blueprint(wpump, url_prefix='/wpump')
 
 def check_credential(user, form):
     if user.password == form['password']:
