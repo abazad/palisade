@@ -24,15 +24,17 @@ def show_user():
     user = db.query(SQ_User).filter(SQ_User.login==current_user).first()
     today = date.today()
     begin_of_month = date(year=today.year, month=today.month, day=1)
-    bytes = db.query(func.sum(SQ_Access_Log_Data.bytes))\
-                        .filter(SQ_Access_Log_Data.user_name==user.login)\
-                        .scalar()
+#    bytes = db.query(func.sum(SQ_Access_Log_Data.bytes))\
+#                        .filter(SQ_Access_Log_Data.user_name==user.login)\
+#                        .scalar()
+    bytes = None
     bytes_sum['all'] = bytes and bytes or 0
                         
-    bytes = db.query(func.sum(SQ_Access_Log_Data.bytes))\
-                        .filter(SQ_Access_Log_Data.user_name==user.login)\
-                        .filter(SQ_Access_Log_Data.access_time>=begin_of_month)\
-                        .scalar()
+#    bytes = db.query(func.sum(SQ_Access_Log_Data.bytes))\
+#                        .filter(SQ_Access_Log_Data.user_name==user.login)\
+#                        .filter(SQ_Access_Log_Data.access_time>=begin_of_month)\
+#                        .scalar()
+    bytes = None
     bytes_sum['month'] = bytes and bytes or 0
                         
     bytes = db.query(func.sum(SQ_Access_Log_Data.bytes))\

@@ -6,5 +6,6 @@
 		{% if session.is_admin == True %}
 			<li class="active"><a href="{{ url_for('admin.show_users') }}">Admin</a></li>
 		{% endif %}
+		<li class="active"><a href="{{ url_for('wpump.index') }}">Downloads</a></li>
 	</ul>
 {% endblock %}

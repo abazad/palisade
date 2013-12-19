@@ -1,0 +1,43 @@
+{% extends "admin/layout.html" %} 
+
+{% block container %}
+<a class="btn" href={{url_for('wpump.download')}}>Download file</a>
+
+<div id="content">
+	<table id="download_list" class="table table-bordered table-striped">
+		<thead>
+			<tr>
+				<th>URL</th>
+				<th>Размер</th>
+				<th>Статус</th>
+				<th>Создан</th>
+				<th>Выполнен</th>
+				<th>Операция</th>	
+			</tr>
+		</thead>
+		<tbody>
+			{% for download in downloads %}
+			<tr>
+				<td>{{ download.url }}</td>
+				<td>{{ download.bytes }}</td>
+				<td>{{ download.state.name }}</td>
+				<td>{{ download.created_on }}</td>
+				<td>{{ download.size_completed }}</td>
+				<td><a class="btn btn-mini"
+					href="{{ url_for('wpump.dispatch', download_id=download.id, action='reject') }}"><i
+						class="icon-ban-circle"></i></a> <a class="btn btn-mini"
+					href="{{ url_for('wpump.dispatch', download_id=download.id, action='accept') }}"><i
+						class="icon-ok"></i></a> <a class="btn btn-mini"
+					href="{{ url_for('wpump.dispatch', download_id=download.id, action='delete') }}"><i
+						class="icon-trash"></i></a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<br>
+	<br>
+
+	<div id="debug">{{ debug }}</div>
+</div>
+{% endblock %}

@@ -1,3 +1,7 @@
-#Thu Aug 15 16:45:20 GMT+05:00 2013
+#Tue Dec 10 18:44:35 GMT+05:00 2013
 eclipse.preferences.version=1
 encoding//palisade/ui/templates/user/show_user.html=UTF-8
+encoding//palisade/ui/templates/wpump/admin.html=UTF-8
+encoding//palisade/ui/templates/wpump/index.html=UTF-8
+encoding//palisade/ui/wpump/views.py=utf8
+encoding//palisade/wpump/wget_thread.py=utf8

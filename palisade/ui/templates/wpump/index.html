@@ -1,0 +1,38 @@
+{% extends "user/layout.html" %} 
+
+{% block container %}
+<a class="btn" href={{url_for('wpump.download')}}>Download file</a>
+<div id="content">
+	<table class="table table-bordered table-spared" id="download_list">
+		<thead>
+			<tr>
+				<th>URL</th>
+				<th>Размер</th>
+				<th>Статус</th>
+				<th>Создан</th>
+				<th>Выполнено(%)</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for download in downloads%}
+			<tr>
+				<td>{{ download.url }}</td>
+				<td>{{ download.bytes}}</td>
+				<td>{{ download.state.name|capitalize }}</td>
+				<td>{{ download.created_on }}</td>
+				{% if download.bytes == 0 %}
+					<td>0%</td>
+				{% else %}
+					<td>{{ (download.bytes_completed/download.bytes*100)|round(0, 'floor') }}%</td>
+				{% endif %}
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<br>
+	<br>
+
+	<div id="debug">{{ debug }}</div>
+</div>
+{% endblock %}
