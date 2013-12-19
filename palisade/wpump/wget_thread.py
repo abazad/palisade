@@ -84,8 +84,15 @@ class WgetWorker(threading.Thread):
             logging.debug('Queue acquired')
             self.download.state_id = State.active
             self.conn.commit()
-            self.pump()
-            self.download.state_id = State.success
+            try:
+                self.pump()
+            except:
+                self.download.state_id = State.failure
+            else:
+                self.download.state_id = State.success
+            finally:
+                self.conn.commit()
+                self.connf.close()
             
     def run(self):
         self.my_name = threading.currentThread().getName()        
@@ -98,12 +105,9 @@ class WgetWorker(threading.Thread):
                             with_lockmode('update').\
                             first()   
             if self.download:
-                self.execute()
-                self.conn.commit()            
-            else:
-                self.conn.close()
-                time.sleep(2)
-            self.conn.close()
+                self.execute()                            
+            else:                
+                time.sleep(2)            
             
 
 

@@ -69,7 +69,7 @@ def admin():
         
         count = conn.query(WPDownload).count()
         downloads = conn.query(WPDownload).all()[offset:offset+limit]
-    return render_template('wpump/admin.html', downloads=downloads)
+    return render_template('wpump/index.html', downloads=downloads)
 
 @wpump.route('/download_edit', methods=['GET', 'POST'])
 def download_edit():
