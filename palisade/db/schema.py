@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, String, Sequence, Date, Boolean, Text, DateTime, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
 
 Base = declarative_base()
 
@@ -154,22 +155,23 @@ class WPDownload(Base):
     url = Column(String(2000))
     owner_id = Column(Integer, ForeignKey('sq_user.id'))
     created_on = Column(DateTime)
-    state = Column(Integer, ForeignKey('wp_download_state.id'))
+    state_id = Column(Integer, ForeignKey('wp_download_state.id'))
+    state = relationship("WPDownloadState")
     bytes = Column(Integer(12))
     bytes_completed = Column(Integer(12))
     
     
-    def __init__(self, url, owner_id, created_on, state=1, bytes=0, bytes_completed=0):
+    def __init__(self, url, owner_id, created_on, state_id=1, bytes=0, bytes_completed=0):
         self.url = url
         self.owner_id = owner_id
         self.created_on = created_on
-        self.state = state
+        self.state_id = state_id
         self.bytes = bytes
         self.bytes_completed = bytes_completed
                 
     
     def __repr__(self):
-        return "<WPDownload('%s', '%s', %s, %s)>" % (self.id, self.url, self.owner_id, self.state)
+        return "<WPDownload('%s', '%s', %s, %s)>" % (self.id, self.url, self.owner_id, self.state_id)
 
 #class WPNotification(Base):
 #    __tablename__ = 'wp_notification'

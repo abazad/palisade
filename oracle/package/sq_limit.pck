@@ -35,7 +35,7 @@ Create Or Replace Package Body Sq_Limit Is
     v_Traffic_Expense Integer;
     Cur_Exe           Integer;
     c_Time_Low_Bound  Constant Varchar2(255) := ' 8'; -- Calc traffic only between 8:00 and 20:00
-    c_Time_High_Bound Constant Varchar2(255) := ' 20';
+    c_Time_High_Bound Constant Varchar2(255) := ' 9';-- ' 20'
   Begin
   
     v_Per_User_Traff := 'Select t.User_Name, Round(Sum(t.Bytes) / (1024 * 1024))

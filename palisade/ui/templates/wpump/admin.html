@@ -1,7 +1,7 @@
-{% extends "layout.html" %} 
+{% extends "admin/layout.html" %} 
 
 {% block container %}
-<a class="btn" href={{url_for('wpump.getit')}}>Download file</a>
+<a class="btn" href={{url_for('wpump.download')}}>Download file</a>
 
 <div id="content">
 	<table id="download_list" class="table table-bordered table-striped">
@@ -16,19 +16,19 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for task in tasks %}
+			{% for download in downloads %}
 			<tr>
-				<td>{{ task.url }}</td>
-				<td>{{ task.size }}</td>
-				<td>{{ task.state }}</td>
-				<td>{{ task.created_on }}</td>
-				<td>{{ task.size_completed }}</td>
+				<td>{{ download.url }}</td>
+				<td>{{ download.bytes }}</td>
+				<td>{{ download.state.name }}</td>
+				<td>{{ download.created_on }}</td>
+				<td>{{ download.size_completed }}</td>
 				<td><a class="btn btn-mini"
-					href="{{ url_for('wpump.dispatch', download_id=task.id, action='reject') }}"><i
+					href="{{ url_for('wpump.dispatch', download_id=download.id, action='reject') }}"><i
 						class="icon-ban-circle"></i></a> <a class="btn btn-mini"
-					href="{{ url_for('wpump.dispatch', download_id=task.id, action='accept') }}"><i
+					href="{{ url_for('wpump.dispatch', download_id=download.id, action='accept') }}"><i
 						class="icon-ok"></i></a> <a class="btn btn-mini"
-					href="{{ url_for('wpump.dispatch', download_id=task.id, action='delete') }}"><i
+					href="{{ url_for('wpump.dispatch', download_id=download.id, action='delete') }}"><i
 						class="icon-trash"></i></a></td>
 			</tr>
 			{% endfor %}

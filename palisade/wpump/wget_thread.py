@@ -56,6 +56,7 @@ class WgetWorker(threading.Thread):
     def get_file_size(self):
         try:
             self.download.bytes = float(self.r.headers['content-length'])
+            self.conn.commit()
         except:
             logging.error("File Size unknown",exc_info=True)
             self.download.bytes = float(1024000000)
@@ -63,7 +64,7 @@ class WgetWorker(threading.Thread):
     def pump(self):   
         self.r = requests.get(self.download.url, stream=True)
         self.file_name = os.path.basename(self.r.url)     
-        self.get_file_size()    
+        self.get_file_size()            
         
         logging.info('Start downloading:\n URL: %s \n File Name: %s \n File Size: %s' \
                       % (self.download.url, self.file_name, self.download.bytes))  
@@ -74,31 +75,36 @@ class WgetWorker(threading.Thread):
                     break
                 fh.write(data)
                 self.download.bytes_completed += CHUNK_SIZE
+                self.conn.commit()
         
 
     def execute(self):
         logging.debug('Try to acquire download queue...')
         with self.s:
             logging.debug('Queue acquired')
-            self.download.state = State.active
+            self.download.state_id = State.active
+            self.conn.commit()
             self.pump()
-            self.download.state = State.success
+            self.download.state_id = State.success
             
     def run(self):
         self.my_name = threading.currentThread().getName()        
         while WgetState.IS_RUNNING:
             self.download = None
-            conn = Session()
+            self.conn = Session()
             logging.debug('WgetWorker.run IS_RUNNING=%s' % 'WOrker')
-            self.download = conn.query(WPDownload).\
-                            filter(WPDownload.state==State.accepted).\
+            self.download = self.conn.query(WPDownload).\
+                            filter(WPDownload.state_id==State.accepted).\
+                            with_lockmode('update').\
                             first()   
             if self.download:
                 self.execute()
-                conn.commit()
+                self.conn.commit()            
             else:
+                self.conn.close()
                 time.sleep(2)
-            conn.close()
+            self.conn.close()
+            
 
 
 class WgetNotif(threading.Thread):
@@ -117,13 +123,13 @@ class WgetNotif(threading.Thread):
     
     def notify_admin(self):
         downloads = self.conn.query(WPDownload).\
-                        filter(WPDownload.state==State.new)
+                        filter(WPDownload.state_id==State.new)
 
         for download in downloads:                            
             logging.info('New URL found in database %s' % download.url)
             self.xmpp.chat(ADMIN_XMPP_ID, download.url)            
-            download.state = State.new1
-#            self.db.cursor.execute("""update wpump_task set state='Started' where state='N'""")
+            download.state_id = State.new1
+#            self.db.cursor.execute("""update wpump_task set state_id='Started' where state_id='N'""")
         self.conn.commit()        
         time.sleep(3)
         
@@ -195,28 +201,28 @@ if __name__ == '__main__':
     
     workers = []
 
-wget_manager = WgetManager()
-wget_manager.run()
-time.sleep(3)
-
-#UI
-ui_root = Tk()
-ui_frame = Frame(ui_root)
-ui_frame.pack()
-ui_btn = Button(ui_frame)
-ui_btn['text'] = 'Stop'
-ui_btn['command'] = wget_manager.stop
-ui_btn.pack()
-ui_root.mainloop()
-#    s = threading.Semaphore(2)
-#    for url in urls:
-#        t = WgetWorker(url, s)
-#        workers.append(t)
-#        t.start()
-#    
-#    for t in workers:
-#        t.join()
-        
-#    r = requests.get('http://wiki.fido.uz/oracle/book/prog/Scot_Urman_Oracle9i.pdf', stream=True)
+    wget_manager = WgetManager()
+    wget_manager.run()
+    time.sleep(3)
+    
+    #UI
+    ui_root = Tk()
+    ui_frame = Frame(ui_root)
+    ui_frame.pack()
+    ui_btn = Button(ui_frame)
+    ui_btn['text'] = 'Stop'
+    ui_btn['command'] = wget_manager.stop
+    ui_btn.pack()
+    ui_root.mainloop()
+    #    s = threading.Semaphore(2)
+    #    for url in urls:
+    #        t = WgetWorker(url, s)
+    #        workers.append(t)
+    #        t.start()
+    #    
+    #    for t in workers:
+    #        t.join()
             
-        
+    #    r = requests.get('http://wiki.fido.uz/oracle/book/prog/Scot_Urman_Oracle9i.pdf', stream=True)
+                
+            

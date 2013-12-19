@@ -1,8 +1,8 @@
-{% extends "layout.html" %} 
+{% extends "user/layout.html" %} 
 {% from "wpump/form/_formhelpers.html" import render_field %}
 
 {% block container %}
-	<form class="form-horizontal" method="post" action="{{ url_for('wpump.getit') }}">
+	<form class="form-horizontal" method="post" action="{{ url_for('wpump.download') }}">
 		{{ render_field(form.url, 'icon-download-alt') }} 
 		{{ render_field(form.email, 'icon-user') }}		
 		<input class="btn" type=submit value=Download>

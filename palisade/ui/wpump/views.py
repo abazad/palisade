@@ -13,7 +13,7 @@ from datetime import date, datetime
 
 from palisade.ui.decorators import login_required, admin_required
 from palisade.ui.wpump.form import DownloadForm
-#from palisade.wpump.wget_thread import State as WPState
+from palisade.wpump.wget_thread import State as WPState
 
 
 @wpump.route('/')
@@ -22,21 +22,24 @@ def index():
     if request.method == 'GET':
         offset = request.args.get('iDisplayStart', 0,   type=int)
         limit = request.args.get('iDisplayLength', 10, type=int)
-        echo = request.args.get('sEcho', type=int)
-        
+        echo = request.args.get('sEcho', type=int)        
         count = conn.query(WPDownload).count()
-        tasks = conn.query(WPDownload).all()[offset:offset+limit]        
-    return render_template('wpump/index.html', tasks=tasks)
+        current_user = session.get('current_user')
+        user = conn.query(SQ_User).filter(SQ_User.login==current_user).first()
+        downloads = conn.query(WPDownload).\
+                    filter(WPDownload.owner_id==user.id).\
+                    all()[offset:offset+limit]        
+    return render_template('wpump/index.html', downloads=downloads)
        
 
-@wpump.route('/getit', methods=['GET', 'POST'])
-def getit():
+@wpump.route('/download', methods=['GET', 'POST'])
+def download():
     conn = Session()    
     form = DownloadForm(request.form)    
     if request.method == 'POST' and form.validate():
         current_user = session.get('current_user')
-        user = conn.query(SQ_User).filter(SQ_User.login==current_user)
-        conn.add(WPDownload(form.url.data, 2, datetime.now()))#TODO: fix user.id
+        user = conn.query(SQ_User).filter(SQ_User.login==current_user).first()
+        conn.add(WPDownload(form.url.data, user.id, datetime.now()))#TODO: fix user.id
         conn.commit()
         return redirect(url_for('wpump.index'))
     return render_template('wpump/form/download.html', form=form)
@@ -47,9 +50,9 @@ def dispatch(download_id):
     download = conn.query(WPDownload).filter_by(id=download_id).one()    
     if request.method == 'GET':
         if request.args['action'] == 'accept':
-            download.state = 2
+            download.state_id = WPState.accepted
         elif request.args['action'] == 'reject':
-            download.state = WPState.rejected
+            download.state_id = WPState.rejected
         elif request.args['action'] == 'delete':
             conn.delete(download)
     conn.commit()
@@ -65,8 +68,8 @@ def admin():
         echo = request.args.get('sEcho', type=int)
         
         count = conn.query(WPDownload).count()
-        tasks = conn.query(WPDownload).all()[offset:offset+limit]
-    return render_template('wpump/admin.html', tasks=tasks)
+        downloads = conn.query(WPDownload).all()[offset:offset+limit]
+    return render_template('wpump/admin.html', downloads=downloads)
 
 @wpump.route('/download_edit', methods=['GET', 'POST'])
 def download_edit():

@@ -1,7 +1,7 @@
-{% extends "layout.html" %} 
+{% extends "user/layout.html" %} 
 
 {% block container %}
-<a class="btn" href={{url_for('wpump.getit')}}>Download file</a>
+<a class="btn" href={{url_for('wpump.download')}}>Download file</a>
 <div id="content">
 	<table class="table table-bordered table-spared" id="download_list">
 		<thead>
@@ -10,17 +10,21 @@
 				<th>Размер</th>
 				<th>Статус</th>
 				<th>Создан</th>
-				<th>Выполнен</th>
+				<th>Выполнено(%)</th>
 			</tr>
 		</thead>
 		<tbody>
-			{% for task in tasks %}
+			{% for download in downloads%}
 			<tr>
-				<td>{{ task.url }}</td>
-				<td>{{ task.size }}</td>
-				<td>{{ task.state }}</td>
-				<td>{{ task.created_on }}</td>
-				<td>{{ task.size_completed }}</td>
+				<td>{{ download.url }}</td>
+				<td>{{ download.bytes}}</td>
+				<td>{{ download.state.name|capitalize }}</td>
+				<td>{{ download.created_on }}</td>
+				{% if download.bytes == 0 %}
+					<td>0%</td>
+				{% else %}
+					<td>{{ (download.bytes_completed/download.bytes*100)|round(0, 'floor') }}%</td>
+				{% endif %}
 			</tr>
 			{% endfor %}
 		</tbody>
