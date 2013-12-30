@@ -6,13 +6,14 @@ Created on 04.03.2013
 '''
 
 import os
+import sys
 import requests
 from requests.auth import HTTPProxyAuth
 import threading
 import logging
 import time
 from structure import Downloads, EmptyQueueError, FINISHED, STARTED, download_state
-from Tkinter import *
+#from Tkinter import *
 from notification import Mail
 from xmpp_send import SendMsgBot
 from palisade.db.conn import Session
@@ -35,6 +36,7 @@ class State(object):
     failure = 7
     new1 = 11#TODO: need improve notification module 
     rejected = 12
+    finished = [success, failure, rejected]
 
             
 class WgetState:
@@ -92,7 +94,7 @@ class WgetWorker(threading.Thread):
                 self.download.state_id = State.success
             finally:
                 self.conn.commit()
-                self.connf.close()
+                self.conn.close()
             
     def run(self):
         self.my_name = threading.currentThread().getName()        
@@ -106,7 +108,9 @@ class WgetWorker(threading.Thread):
                             first()   
             if self.download:
                 self.execute()                            
-            else:                
+            else:
+                self.conn.commit() 
+                self.conn.close()               
                 time.sleep(2)            
             
 
@@ -116,15 +120,8 @@ class WgetNotif(threading.Thread):
         threading.Thread.__init__(self)        
         self.download = None
 #        self.mailer = Mail()
-        self.xmpp = SendMsgBot()
-        self.conn = Session()
-    
-    def do_work(self, rcpt=None):
-        send_to = rcpt and rcpt or self.download.email
-        new_url = '\\\\nserver\in_out\download\%s' % os.path.basename(self.task.url)
-#        self.mailer.send([self.task.email], 'WgetNotif', new_url)
-        self.xmpp.chat(send_to, new_url)
-    
+        self.xmpp = SendMsgBot()        
+   
     def notify_admin(self):
         downloads = self.conn.query(WPDownload).\
                         filter(WPDownload.state_id==State.new)
@@ -134,26 +131,34 @@ class WgetNotif(threading.Thread):
             self.xmpp.chat(ADMIN_XMPP_ID, download.url)            
             download.state_id = State.new1
 #            self.db.cursor.execute("""update wpump_task set state_id='Started' where state_id='N'""")
-        self.conn.commit()        
-        time.sleep(3)
-        
+        self.conn.commit()    
+
+    def notify_client_helper(self, download):
+        send_to = download.owner.email
+        new_url = '\\\\nserver\in_out\download\%s' % os.path.basename(download.url)
+#        self.mailer.send([self.task.email], 'WgetNotif', new_url)
+        self.xmpp.chat(send_to, new_url)
     
     def notify_client(self):
-        try:
-            pass
-        except:
-            pass        
-        else:
-            pass
-#            self.do_work()
-        finally:
-            time.sleep(3)
-
+        downloads = self.conn.query(WPDownload).\
+                    filter(WPDownload.is_notified==False).\
+                    filter(WPDownload.state_id.in_([7,8]))
+        for download in downloads:
+            try:
+                self.notify_client_helper(download)
+            except:
+                print 'JOPAAAA ERROR %s' % sys.exc_info()[0]
+            else:
+                download.is_notified = True
+        self.conn.commit()        
     
     def run(self):
         while WgetState.IS_RUNNING:
+            self.conn = Session()
             self.notify_admin()
             self.notify_client()
+            self.conn.close()
+            time.sleep(3)    
                             
                 
     
@@ -207,17 +212,16 @@ if __name__ == '__main__':
 
     wget_manager = WgetManager()
     wget_manager.run()
-    time.sleep(3)
-    
-    #UI
-    ui_root = Tk()
-    ui_frame = Frame(ui_root)
-    ui_frame.pack()
-    ui_btn = Button(ui_frame)
-    ui_btn['text'] = 'Stop'
-    ui_btn['command'] = wget_manager.stop
-    ui_btn.pack()
-    ui_root.mainloop()
+        
+#    #UI
+#    ui_root = Tk()
+#    ui_frame = Frame(ui_root)
+#    ui_frame.pack()
+#    ui_btn = Button(ui_frame)
+#    ui_btn['text'] = 'Stop'
+#    ui_btn['command'] = wget_manager.stop
+#    ui_btn.pack()
+#    ui_root.mainloop()
     #    s = threading.Semaphore(2)
     #    for url in urls:
     #        t = WgetWorker(url, s)

@@ -1,7 +1,20 @@
 pip install flask sqlalchemy wtForms
 
+Wpump requirements::
+
+	pip install requests
+	pip install sleekxmpp
+	yum install tkinter
+
 groupadd palisade
 useradd -g palisade -m palisade
 
 mkdir /home/palisade/app
 * copy palisade package to /home/palisade/app
+
+
+
+
+export ORACLE_HOME=/usr/lib/oracle/11.2/client
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib/
+pip install cx_Oracle
