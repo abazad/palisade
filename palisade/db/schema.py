@@ -154,20 +154,23 @@ class WPDownload(Base):
     id = Column(Integer, Sequence('wp_download_seq'), primary_key=True)
     url = Column(String(2000))
     owner_id = Column(Integer, ForeignKey('sq_user.id'))
+    owner = relationship("SQ_User")
     created_on = Column(DateTime)
     state_id = Column(Integer, ForeignKey('wp_download_state.id'))
     state = relationship("WPDownloadState")
     bytes = Column(Integer(12))
     bytes_completed = Column(Integer(12))
+    is_notified = Column(Boolean, default=False)
     
     
-    def __init__(self, url, owner_id, created_on, state_id=1, bytes=0, bytes_completed=0):
+    def __init__(self, url, owner_id, created_on, state_id=1, bytes=0, bytes_completed=0, is_notified=False):
         self.url = url
         self.owner_id = owner_id
         self.created_on = created_on
         self.state_id = state_id
         self.bytes = bytes
         self.bytes_completed = bytes_completed
+        self.is_notified = is_notified
                 
     
     def __repr__(self):

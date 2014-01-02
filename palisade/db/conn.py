@@ -10,7 +10,7 @@ Created on Jul 14, 2013
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-engine = create_engine("oracle://palisade:Q1w3tre321@fbs", echo=True)
+engine = create_engine("oracle://palisade:Q1w3tre321@fbs", echo=True, pool_size=20)
 Session = sessionmaker(engine)
 
 
