@@ -119,7 +119,7 @@ class WgetNotif(threading.Thread):
     def __init__(self):
         threading.Thread.__init__(self)        
         self.download = None
-#        self.mailer = Mail()
+        self.mailer = Mail()
         self.xmpp = SendMsgBot()        
    
     def notify_admin(self):
@@ -136,13 +136,13 @@ class WgetNotif(threading.Thread):
     def notify_client_helper(self, download):
         send_to = download.owner.email
         new_url = '\\\\nserver\in_out\download\%s' % os.path.basename(download.url)
-#        self.mailer.send([self.task.email], 'WgetNotif', new_url)
-        self.xmpp.chat(send_to, new_url)
+        self.mailer.send(send_to, 'Palisade.WPUMP.Notif', new_url)
+#        self.xmpp.chat(send_to, new_url)
     
     def notify_client(self):
         downloads = self.conn.query(WPDownload).\
                     filter(WPDownload.is_notified==False).\
-                    filter(WPDownload.state_id.in_([7,8]))
+                    filter(WPDownload.state_id.in_(State.finished))
         for download in downloads:
             try:
                 self.notify_client_helper(download)
