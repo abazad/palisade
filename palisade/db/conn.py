@@ -9,8 +9,16 @@ Created on Jul 14, 2013
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+from palisade.conf import PalisadeConfig
 
-engine = create_engine("oracle://palisade:Q1w3tre321@fbs", echo=True, pool_size=20)
+conf = PalisadeConfig()
+db_conn_string = "oracle://%s:%s@%s:%s/%s" % (conf.db.login, 
+                                              conf.db.password, 
+                                              conf.db.host,
+                                              conf.db.port,
+                                              conf.db.sid)
+
+engine = create_engine(db_conn_string, echo=True, pool_size=20)
 Session = sessionmaker(engine)
 
 

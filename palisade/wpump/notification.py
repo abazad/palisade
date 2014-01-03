@@ -9,7 +9,7 @@ from email.mime.text import MIMEText
 import types
 import logging
 
-SMTP_HOST = 'smtp.fido.uz'
+SMTP_HOST = 'zimbra.fido.uz'
 SMTP_PORT = '25'
 SMTP_USER = 'download@fido.uz'
 SMTP_PSWD = 'Q1w3tre'

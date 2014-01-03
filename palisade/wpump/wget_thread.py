@@ -18,12 +18,15 @@ from notification import Mail
 from xmpp_send import SendMsgBot
 from palisade.db.conn import Session
 from palisade.db.schema import WPDownload
+from palisade.conf import PalisadeConfig
 
-THREAD_COUNT = 3
+conf = PalisadeConfig()
+
+THREAD_COUNT = conf.wpump.thread_count
+OUTPUT_DIR=conf.wpump.output_dir
+CHUNK_SIZE = conf.wpump.chunk_size
+
 IS_RUNNING = True
-OUTPUT_DIR='X:\download'
-CHUNK_SIZE = 1024000
-
 ADMIN_XMPP_ID = u'vladimir@fido.uz'
 
 class State(object):
