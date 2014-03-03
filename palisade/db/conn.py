@@ -17,8 +17,8 @@ db_conn_string = "oracle://%s:%s@%s:%s/%s" % (conf.db.login,
                                               conf.db.host,
                                               conf.db.port,
                                               conf.db.sid)
-
-engine = create_engine(db_conn_string, echo=True, pool_size=20)
+# Set echo=True for DEBUG db interactions
+engine = create_engine(db_conn_string, echo=False, pool_size=20)
 Session = sessionmaker(engine)
 
 

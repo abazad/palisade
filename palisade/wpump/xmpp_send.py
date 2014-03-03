@@ -7,7 +7,7 @@ Created on 16.04.2013
 import logging
 import sleekxmpp
 
-XMPP_SERV = 'jabber.fido.uz'
+XMPP_SERV = '10.50.50.254'
 XMPP_PORT = 5222
 XMPP_USER = 'wpump@fido.uz'
 XMPP_PASS = 'Q1w3tre'

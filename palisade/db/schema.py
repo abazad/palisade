@@ -18,7 +18,7 @@ class SQ_User(Base):
     email = Column(String(250), unique=True)
     is_admin = Column(Boolean())
     status = Column(String(3))
-    traffic_limit = Column(Integer(9))
+    traffic_limit = Column(Integer())
     
     def __init__(self, first_name, last_name, login, password, email, is_admin, status, traffic_limit):
         self.first_name = first_name
@@ -45,7 +45,7 @@ class SQ_Access_Log_Data(Base):
     client_src_ip = Column(String(15))
     sq_req_status = Column(String(64))       
     http_status_code = Column(String(4))
-    bytes = Column(Integer(9))
+    bytes = Column(Integer)
     req_method = Column(String(10))
     user_name = Column(String(32))
     sq_hierarchy_status = Column(String(32))
@@ -84,7 +84,7 @@ class SQ_Access_Log_Data(Base):
 
 class SQ_Lost_Password(Base):
     __tablename__='SQ_LOST_PASSWORD'
-    id = Column(Integer(9), Sequence('sq_lost_password_seq'), primary_key=True)
+    id = Column(Integer, Sequence('sq_lost_password_seq'), primary_key=True)
     created_on = Column(Date)
     email = Column(String(250))
     state = Column(String(50))
@@ -102,7 +102,7 @@ class SQ_Lost_Password(Base):
 
 class SQ_Report_Data(Base):
     __tablename__ = 'SQ_REPORT_DATA'
-    id = Column(Integer(9), Sequence('sq_report_data_seq'), primary_key=True)
+    id = Column(Integer, Sequence('sq_report_data_seq'), primary_key=True)
     created_on = Column(Date)
     report_name = Column(String(150))
     state = Column(String(50))
@@ -119,7 +119,7 @@ class SQ_Report_Data(Base):
 
 class SQ_Report_XSL(Base):
     __tablename__ = 'SQ_REPORT_XSL'
-    id = Column(Integer(9), Sequence('sq_report_xsl_seq'), primary_key=True)
+    id = Column(Integer, Sequence('sq_report_xsl_seq'), primary_key=True)
     report_name = Column(String(50))
     data = Column(Text(6000))
     modified_on = Column(Date)
@@ -158,8 +158,8 @@ class WPDownload(Base):
     created_on = Column(DateTime)
     state_id = Column(Integer, ForeignKey('wp_download_state.id'))
     state = relationship("WPDownloadState")
-    bytes = Column(Integer(12))
-    bytes_completed = Column(Integer(12))
+    bytes = Column(Integer)
+    bytes_completed = Column(Integer)
     is_notified = Column(Boolean, default=False)
     
     

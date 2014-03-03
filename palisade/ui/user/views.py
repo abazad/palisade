@@ -30,11 +30,10 @@ def show_user():
     bytes = None
     bytes_sum['all'] = bytes and bytes or 0
                         
-#    bytes = db.query(func.sum(SQ_Access_Log_Data.bytes))\
-#                        .filter(SQ_Access_Log_Data.user_name==user.login)\
-#                        .filter(SQ_Access_Log_Data.access_time>=begin_of_month)\
-#                        .scalar()
-    bytes = None
+    bytes = db.query(func.sum(SQ_Access_Log_Data.bytes))\
+                        .filter(SQ_Access_Log_Data.user_name==user.login)\
+                        .filter(SQ_Access_Log_Data.access_time>=begin_of_month)\
+                        .scalar()    
     bytes_sum['month'] = bytes and bytes or 0
                         
     bytes = db.query(func.sum(SQ_Access_Log_Data.bytes))\

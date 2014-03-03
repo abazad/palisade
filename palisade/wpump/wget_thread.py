@@ -93,6 +93,8 @@ class WgetWorker(threading.Thread):
                 self.pump()
             except:
                 self.download.state_id = State.failure
+                print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX \
+Error occured while pupm() proc: %s' % sys.exc_info()[2]
             else:
                 self.download.state_id = State.success
             finally:
