@@ -94,7 +94,7 @@ class WgetWorker(threading.Thread):
             except:
                 self.download.state_id = State.failure
                 print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX \
-Error occured while pupm() proc: %s' % sys.exc_info()[2]
+Error occured while pupm() proc: %s' % sys.exc_info()[1]
             else:
                 self.download.state_id = State.success
             finally:
