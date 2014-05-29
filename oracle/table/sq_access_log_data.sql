@@ -67,3 +67,10 @@ alter table SQ_ACCESS_LOG_DATA
     minextents 1
     maxextents unlimited
   );
+--**************
+--Add partitions
+--**************
+
+
+--2014-05-05
+alter table SQ_ACCESS_LOG_DATA add partition p_2014_5 values less than (to_date('2014-06-01', 'YYYY-MM-DD')) tablespace SQ_DATA;
