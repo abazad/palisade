@@ -54,6 +54,8 @@ def edit_user(user_id=None):
     if request.method == 'POST' and form.validate:
         user.first_name = form.first_name.data
         user.last_name = form.last_name.data
+        if form.traffic_limit.data > user.traffic_limit:
+            user.status = 'A'
         user.traffic_limit = form.traffic_limit.data
         session.commit()      
         session.close()  
