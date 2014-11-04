@@ -19,6 +19,7 @@ from xmpp_send import SendMsgBot
 from palisade.db.conn import Session
 from palisade.db.schema import WPDownload
 from palisade.conf import PalisadeConfig
+import os
 
 conf = PalisadeConfig()
 
@@ -73,8 +74,8 @@ class WgetWorker(threading.Thread):
         
         logging.info('Start downloading:\n URL: %s \n File Name: %s \n File Size: %s' \
                       % (self.download.url, self.file_name, self.download.bytes))  
-            
-        with open(os.path.join(OUTPUT_DIR, self.file_name),'wb') as fh:
+        os.umask(000)
+        with open(os.path.join(OUTPUT_DIR, self.file_name), 'wb+') as fh:
             for data in self.r.iter_content(CHUNK_SIZE):
                 if IS_RUNNING == False:
                     break
