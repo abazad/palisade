@@ -74,3 +74,11 @@ alter table SQ_ACCESS_LOG_DATA
 
 --2014-05-05
 alter table SQ_ACCESS_LOG_DATA add partition p_2014_5 values less than (to_date('2014-06-01', 'YYYY-MM-DD')) tablespace SQ_DATA;
+--2014-05-02
+alter table SQ_ACCESS_LOG_DATA add partition p_2014_6 values less than (to_date('2014-07-01', 'YYYY-MM-DD')) tablespace SQ_DATA;
+alter table SQ_ACCESS_LOG_DATA add partition p_2014_7 values less than (to_date('2014-08-01', 'YYYY-MM-DD')) tablespace SQ_DATA;
+alter table SQ_ACCESS_LOG_DATA add partition p_2014_8 values less than (to_date('2014-09-01', 'YYYY-MM-DD')) tablespace SQ_DATA;
+alter table SQ_ACCESS_LOG_DATA add partition p_2014_9 values less than (to_date('2014-10-01', 'YYYY-MM-DD')) tablespace SQ_DATA;
+alter table SQ_ACCESS_LOG_DATA add partition p_2014_10 values less than (to_date('2014-11-01', 'YYYY-MM-DD')) tablespace SQ_DATA;
+alter table SQ_ACCESS_LOG_DATA add partition p_2014_11 values less than (to_date('2014-12-01', 'YYYY-MM-DD')) tablespace SQ_DATA;
+alter table SQ_ACCESS_LOG_DATA add partition p_2014_12 values less than (to_date('2015-01-01', 'YYYY-MM-DD')) tablespace SQ_DATA;

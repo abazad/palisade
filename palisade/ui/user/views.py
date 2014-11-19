@@ -76,7 +76,9 @@ def is_recover_args_valid(secret_key, email):
                     filter(SQ_Lost_Password.secret_key==secret_key).\
                     first()
         db.close()
-        if lost_pwd.email == email:
+        if lost_pwd is None:
+            return False
+        elif lost_pwd.email == email:
             return True
     return False
 
